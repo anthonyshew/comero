@@ -4,21 +4,18 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Adopt a Minor Leaguer`,
+    title: `Comero`,
     author: {
       name: `Anthony Shew`,
       summary: `who develops things.`,
     },
-    description: `#StandwithMiLB`,
-    siteUrl: `https://adoptaminorleaguer.com/`,
+    description: `The easiest restaurant template out there.`,
+    siteUrl: `https://comero.com/`,
     social: {
       twitter: `/adoptmilbplayer`,
       facebook: `/groups/218122932877473/`,
       instagram: `/adoptanmilbplayer/`,
     },
-    donate: {
-      shop: `https://promotionsetc.commonsku.com/shop/e5be5b9c-b850-4648-9d5f-830033b386b2`,
-    }
   },
   developMiddleware: app => {
     app.use(
