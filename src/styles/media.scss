@@ -1,0 +1,85 @@
+@import 'global.scss';
+
+.page-media {
+    h1 {
+        font-size: 48px;
+        font-family: $passion;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        font-size: 36px;
+    }
+
+    h3 {
+        padding: .5rem 0;
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    h4 {
+        margin-bottom: .5rem;
+        font-size: 20px;
+    }
+
+    .story {
+        padding: 1rem 0;
+    }
+
+    .story:nth-child(odd) {
+        background-color: $blue;
+
+        h2,
+        h3,
+        h4,
+        p {
+            color: $white;
+        }
+
+    }
+
+    .media-notice {
+        padding: 1rem;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 6rem;
+
+        .image {
+            border-radius: 1rem;
+        }
+
+        .description {
+            width: 500px;
+            padding: 0 2rem;
+            text-align: center;
+        }
+    }
+
+    .link-button {
+        font-family: $passion;
+    }
+}
+
+@media (max-width: 850px) {
+    .page-media {
+        .flex-row {
+            flex-direction: column;
+            padding: 0 1.5rem;
+
+            .description {
+                width: initial;
+                padding: 0;
+            }
+        }
+    }
+}

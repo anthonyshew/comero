@@ -1,0 +1,40 @@
+@import 'global.scss';
+
+.page-legal {
+    padding: 1rem 2rem;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin: 1rem 0;
+        font-family: $passion;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    p {
+        margin: 1rem 0;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    ol {
+        margin: 0 1rem;
+        list-style: disc;
+
+        li {
+            color: $blue;
+            font-family: $raleway;
+        }
+    }
+}

@@ -1,0 +1,129 @@
+/* latin-ext */
+@font-face {
+    font-family: 'Passion One';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Passion One Regular'), local('PassionOne-Regular'), url("/fonts/Passion_One/PassionOne-Regular.ttf") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Passion One';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Passion One Regular'), local('PassionOne-Regular'), url("/fonts/Passion_One/PassionOne-Regular.ttf") format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Raleway'), local('Raleway-Regular'), url("/fonts/Raleway/Raleway-Regular.ttf") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Raleway'), local('Raleway-Regular'), url("/fonts/Raleway/Raleway-Regular.ttf") format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* latin-ext */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Raleway'), local('Raleway-Regular'), url("/fonts/Raleway/Raleway-Regular.ttf") format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Raleway Bold'), local('Raleway-Bold'), url("/fonts/Raleway/Raleway-Bold.ttf") format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+$passion:'Passion One',
+"Times New Roman";
+$raleway: 'Raleway',
+sans-serif;
+
+$black: #000000;
+$white: #ffffff;
+$gray: #AEAEAE;
+$red: #CC0001;
+$dark-red: #800000;
+$blue: #00235B;
+$light-blue: #88ABE2;
+$yellow: #F39116;
+
+body {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h4,
+h5,
+h6,
+label {
+    color: $blue;
+    font-family: $raleway;
+}
+
+h2 {
+    color: $blue;
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.container-link-button {
+    text-align: center;
+}
+
+.button-default,
+.link-button {
+    margin: 1rem auto 0;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: $yellow;
+    font-family: $passion;
+    font-size: 24px;
+    text-align: center;
+
+    &:visited,
+    &:hover,
+    &:link {
+        color: $blue;
+    }
+}

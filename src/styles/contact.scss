@@ -1,0 +1,85 @@
+@import 'global.scss';
+
+.page-contact {
+
+    h1 {
+        font-size: 48px;
+        font-family: $passion;
+        text-align: center;
+    }
+
+    p {
+        margin: 0 1rem;
+        text-align: center;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+
+        .error {
+            margin-top: .5rem;
+            padding: 0 1rem;
+            padding-bottom: 1rem;
+            color: $red;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            width: 50%;
+            min-width: 280px;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .form-input {
+            display: block;
+            width: 100%;
+            min-width: 280px;
+            max-width: 560px;
+            margin: .4rem auto 1rem;
+            padding: .4rem .6rem;
+            border: 2px solid $blue;
+            border-radius: 1rem;
+            color: $blue;
+            font-weight: 900;
+
+            &[type="textarea"] {
+                height: 150px;
+            }
+        }
+
+        .submit-button {
+            width: 25%;
+            min-width: 140px;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+            padding: .5rem;
+            border: 2px solid $blue;
+            border-radius: 1rem;
+            font-size: 24px;
+            font-family: $passion;
+            color: $blue;
+            background-color: $yellow;
+            cursor: pointer;
+            appearance: none;
+        }
+    }
+
+    .success-message {
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .page-contact {
+        p {
+            text-align: left;
+        }
+    }
+}

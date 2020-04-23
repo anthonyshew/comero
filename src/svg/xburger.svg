@@ -1,0 +1,5 @@
+<svg className="xburger" viewBox="0 0 131 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 6C0 2.68629 2.68629 0 6 0H125C128.314 0 131 2.68629 131 6V91C131 94.3137 128.314 97 125 97H6C2.68629 97 0 94.3137 0 91V6Z" fill="#00235B"/>
+<line x1="34.2795" y1="79.6396" x2="97.9191" y2="16" stroke="#CE0000" stroke-width="10" stroke-linecap="round"/>
+<line x1="36.0711" y1="16.2209" x2="99.7107" y2="79.8606" stroke="#CE0000" stroke-width="10" stroke-linecap="round"/>
+</svg>
