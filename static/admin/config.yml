@@ -24,8 +24,4 @@ collections:
         name: "layoutEditor"
         file: "content/siteEditor.json"
         fields:
-        - {label: "Top View Layout",
-        name: "heroLayout",
-        widget: "select",
-        options: ["Left, Center"],
-        default: ["Left"]}
+        - {label: "Top View Layout", name: "heroLayout", widget: "select", options: ["Left, Center"], default: ["Left"]}
