@@ -7,7 +7,7 @@ public_folder: /img
 
 collections:
   - name: "restaurantMenu"
-    label: "My Restaurant's Menu"
+    label: "Menu Sections"
     folder: "content/restaurantMenu"
     create: true
     editor:
@@ -16,7 +16,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "List", name: "list", widget: "list", field: {label: "Menu Item", name: "menuItem", widget: "string"} }
   - name: "siteConfig"
     label: "Site Config"
     files:
@@ -24,4 +24,4 @@ collections:
         name: "layoutEditor"
         file: "content/siteEditor.json"
         fields:
-        - {label: "Top View Layout", name: "heroLayout", widget: "select", options: ["Left, Center"], default: ["Left"]}
+        - {label: "Top View Layout", name: "heroLayout", widget: "select", options: ["Left", "Center"], default: ["Left"]}
