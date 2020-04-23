@@ -40,7 +40,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/restaurantMenu`,
-        name: `blog`,
+        name: `restaurantMenu`,
       },
     },
     {
