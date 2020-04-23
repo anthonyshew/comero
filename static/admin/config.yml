@@ -20,8 +20,8 @@ collections:
   - name: "siteConfig"
     label: "Site Config"
     files:
-      - label: "Site Editor"
-        name: "siteEditor"
+      - label: "Layout Editor"
+        name: "layoutEditor"
         file: "content/siteEditor.json"
         fields:
         - label: "Top View Layout"
