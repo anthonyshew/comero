@@ -1,23 +1,29 @@
-import React, { useRef } from "react"
+import React from "react"
 import '../styles/index.scss'
+import { useStaticQuery, graphql } from "gatsby"
 
-import useAnimateOnVisible from "../hooks/useAnimateOnVisible"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const Index = ({ data, location }) => {
+const Index = ({ location }) => {
+  const data = useStaticQuery(graphql`
+  query MenuQuery {
+    allMarkdownRemark {
+      nodes {
+        frontmatter {
+          title
+          list {
+            menuItemImage
+            menuItem
+            menuItemDescription
+          }
+        }
+      }
+    }
+  }
+  `)
 
-  const playerMessage = useRef(null)
-  const sponsorMessage = useRef(null)
-  useAnimateOnVisible({ element: playerMessage })
-  useAnimateOnVisible({ element: sponsorMessage })
-
-  const playerCard = useRef(null)
-  const sponsorCard = useRef(null)
-  const companyCard = useRef(null)
-  useAnimateOnVisible({ element: companyCard })
-  useAnimateOnVisible({ element: playerCard })
-  useAnimateOnVisible({ element: sponsorCard })
+  const menuSections = data.allMarkdownRemark.nodes
 
   return (
     <Layout location={location}>
@@ -28,7 +34,17 @@ const Index = ({ data, location }) => {
         <meta name="twitter:image" content="/media/aaml-logo.jpg" />
         <meta name="twitter:image:alt" content="Adopt a Minor Leaguer Home Page" />
       </SEO>
-    Hola, mundo!
+      {menuSections.map(({ frontmatter }) => (
+        <>
+          <h2>{frontmatter.title}</h2>
+          {frontmatter.list.map((item) => (
+            <>
+              <h3>{item.menuItem}</h3>
+              <p>{item.menuItemDescription}</p>
+              <img src={item.menuItemImage} />
+            </>))}
+        </>
+      ))}
     </Layout>
   )
 }
