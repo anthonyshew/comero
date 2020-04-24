@@ -1,23 +1,28 @@
 import React from "react"
 import '../styles/reset.scss'
 import '../styles/global.scss'
-import '../styles/navbar.scss'
 import '../styles/home-hero.scss'
 import '../styles/footer.scss'
+import Image from "gatsby-image"
+import { useStaticQuery } from "gatsby"
 
 const Layout = ({ location, children }) => {
+  const data = useStaticQuery(graphql`
+    query layoutQuery {
+      companyLogo: file(absolutePath: {regex: "/logo.jpg/"}) {
+        childImageSharp {
+          fixed(width: 320, height: 320) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
 
-  const rootPath = `${__PATH_PREFIX__}/`
   let header, footer
 
-
-  if (location.pathname === rootPath) {
-    header = (<p>index header</p>)
-    footer = (<p>index footer</p>)
-  } else {
-    header = (<p>header</p>)
-    footer = (<p>footer</p>)
-  }
+  header = (<Image className="header-logo" fixed={data.companyLogo.childImageSharp.fixed} alt="Restaurant logo." />)
+  footer = (<p>footer</p>)
 
   return (
     <>

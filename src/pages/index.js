@@ -41,7 +41,7 @@ const Index = ({ location }) => {
             <>
               <h3>{item.menuItem}</h3>
               <p>{item.menuItemDescription}</p>
-              <img src={item.menuItemImage} />
+              <img src={item.menuItemImage} alt={item.menuItem} />
             </>))}
         </>
       ))}
