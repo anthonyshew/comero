@@ -13,10 +13,13 @@ collections:
     editor:
      preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "List", name: "list", widget: "list", field: {label: "Menu Item", name: "menuItem", widget: "string"} }
+      - { label: "Section Name", name: "title", widget: "string" }
+      - { label: "List", name: "list", widget: "list",
+      fields:
+        - {label: "Menu Item", name: "menuItem", widget: "string"}
+        - {label: "Description", name: "menuItemDescription", widget: "string"}
+        - {label: "Image", name: "menuItemImage", widget: "image"}
+      }
   - name: "siteConfig"
     label: "Site Config"
     files:
