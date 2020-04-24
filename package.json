@@ -9,6 +9,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "run-p start:**",
+    "start:cms": "npx netlify-cms-proxy-server",
     "start:app": "gatsby develop -p 3000",
     "start:lambda": "netlify-lambda serve src/.netlify/functions",
     "build": "gatsby build && netlify-lambda build src/.netlify/functions",
