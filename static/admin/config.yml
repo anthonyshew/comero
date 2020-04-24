@@ -14,12 +14,7 @@ collections:
      preview: false
     fields:
       - { label: "Section Name", name: "title", widget: "string" }
-      - { label: "List", name: "list", widget: "list",
-      fields:
-        - {label: "Menu Item", name: "menuItem", widget: "string"}
-        - {label: "Description", name: "menuItemDescription", widget: "string"}
-        - {label: "Image", name: "menuItemImage", widget: "image"}
-      }
+      - { label: "List", name: "list", widget: "list", fields: {label: "Menu Item", name: "menuItem", widget: "string"}, {label: "Description", name: "menuItemDescription", widget: "string"}, {label: "Image", name: "menuItemImage", widget: "image"}}
   - name: "siteConfig"
     label: "Site Config"
     files:
