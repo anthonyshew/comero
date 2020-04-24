@@ -26,9 +26,9 @@ collections:
   - name: "siteConfig"
     label: "Site Config"
     files:
-      - label: "Layout Editor"
-        name: "layoutEditor"
-        file: "content/siteEditor.json"
+      - label: "Restaurant Info"
+        name: "restaurantInfo"
+        file: "content/restaurantInfo.json"
         fields:
         - label: "Top View Layout"
           name: "heroLayout"
@@ -45,42 +45,119 @@ collections:
         - label: "Monday Hours"
           name: "mondayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "mondayOpen", widget: "number"}
-            - {label: "Close", name: "mondayOpen", widget: "number"}
+            - label: "Open"
+              name: "mondayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "mondayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "mondayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "mondayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "mondayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "mondayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
         - label: "Tuesday Hours"
           name: "tuesdayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "TuesdayOpen", widget: "number"}
-            - {label: "Close", name: "TuesdayOpen", widget: "number"}
+            - label: "Open"
+              name: "tuesdayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "tuesdayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "tuesdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "tuesdayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "tuesdayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "tuesdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
         - label: "Wednesday Hours"
           name: "wednesdayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "wednesdayOpen", widget: "number"}
-            - {label: "Close", name: "wednesdayOpen", widget: "number"}
+            - label: "Open"
+              name: "wednesdayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "wednesdayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "wednesdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "wednesdayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "wednesdayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "wednesdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
         - label: "Thursday Hours"
           name: "thursdayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "thursdayOpen", widget: "number"}
-            - {label: "Close", name: "thursdayOpen", widget: "number"}
+            - label: "Open"
+              name: "thursdayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "thursdayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "thursdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "thursdayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "thursdayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "thursdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
         - label: "Friday Hours"
           name: "fridayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "fridayOpen", widget: "number"}
-            - {label: "Close", name: "fridayOpen", widget: "number"}
+            - label: "Open"
+              name: "fridayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "fridayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "fridayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "fridayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "fridayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "fridayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
         - label: "Saturday Hours"
           name: "saturdayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "saturdayOpen", widget: "number"}
-            - {label: "Close", name: "saturdayOpen", widget: "number"}
+            - label: "Open"
+              name: "saturdayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "saturdayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "saturdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "saturdayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "saturdayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "saturdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
         - label: "Sunday Hours"
           name: "sundayHours"
           allow_add: false
+          widget: "list"
           fields:
-            - {label: "Open", name: "sundayOpen", widget: "number"}
-            - {label: "Close", name: "sundayOpen", widget: "number"}
+            - label: "Open"
+              name: "sundayOpen"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "sundayHourOpen", widget: "number"}
+              - {label: "AM/PM", name: "sundayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+            - label: "Close"
+              name: "sundayClose"
+              widget: "list"
+              fields:
+              - {label: "Hour", name: "sundayHourClose", widget: "number"}
+              - {label: "AM/PM", name: "sundayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}

@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/siteEditor.json`,
+        path: `${__dirname}/content/restaurantInfo.json`,
         name: `siteEditor`,
       },
     },
