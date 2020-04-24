@@ -42,37 +42,44 @@ collections:
           name: "restaurantMotto"
           widget: "string"
           required: false
-        - label: Monday Hours
+        - label: "Monday Hours"
+          name: "mondayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "mondayOpen", widget: "number"}
             - {label: "Close", name: "mondayOpen", widget: "number"}
-        - label: Tuesday Hours
+        - label: "Tuesday Hours"
+          name: "tuesdayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "TuesdayOpen", widget: "number"}
             - {label: "Close", name: "TuesdayOpen", widget: "number"}
-        - label: Wednesday Hours
+        - label: "Wednesday Hours"
+          name: "wednesdayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "wednesdayOpen", widget: "number"}
             - {label: "Close", name: "wednesdayOpen", widget: "number"}
-        - label: Thursday Hours
+        - label: "Thursday Hours"
+          name: "thursdayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "thursdayOpen", widget: "number"}
             - {label: "Close", name: "thursdayOpen", widget: "number"}
-        - label: Friday Hours
+        - label: "Friday Hours"
+          name: "fridayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "fridayOpen", widget: "number"}
             - {label: "Close", name: "fridayOpen", widget: "number"}
-        - label: Saturday Hours
+        - label: "Saturday Hours"
+          name: "saturdayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "saturdayOpen", widget: "number"}
             - {label: "Close", name: "saturdayOpen", widget: "number"}
-        - label: Sunday Hours
+        - label: "Sunday Hours"
+          name: "sundayHours"
           allow_add: false
           fields:
             - {label: "Open", name: "sundayOpen", widget: "number"}
