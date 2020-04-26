@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Accordion from "../components/accordion"
+import { Accordion, AccordionItem } from "../components/accordion"
 
 const Index = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -58,10 +58,12 @@ const Index = ({ location }) => {
     allMarkdownRemark {
       nodes {
         frontmatter {
+          orderPosition
           menuSectionList {
-            menuItemImage
             menuItem
+            menuItemPrice
             menuItemDescription
+            menuItemImage
           }
           sectionTitle
           title
@@ -96,32 +98,36 @@ const Index = ({ location }) => {
         </div>
       </section>
 
-      <Accordion />
-
       <section id="menu" className="menu-container">
         <h2>Menu</h2>
-        {menuSections.map(({ frontmatter }) => (
-          <div key={frontmatter.sectionTitle} className="menu-section">
-            <h3>{frontmatter.sectionTitle}</h3>
-            {frontmatter.menuSectionList.map((item) => (
-              <div key={item.menuItem} className="menu-item">
-                <h4>{item.menuItem}</h4>
-                <p>{item.menuItemDescription}</p>
-                <img src={item.menuItemImage} alt={item.menuItem} />
-              </div>))}
-          </div>
-        ))}
+        <Accordion>
+          {menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
+            <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
+              {frontmatter.menuSectionList.map((item) => (
+                <div key={item.menuItem} className="menu-item">
+                  <h4>{item.menuItem}: ${String(item.menuItemPrice.toFixed(2))}</h4>
+                  <div className="menu-item-body">
+
+                    <img className="menu-item-image" src={item.menuItemImage} alt={item.menuItem} />
+                    <p className="menu-item-description">{item.menuItemDescription}</p>
+                  </div>
+                </div>
+              ))}
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
-      {data.contentJson.restaurantAbout.length > 0 ? (
-        <section id="about" className="about-container">
-          <h2>About Us</h2>
-          <p>{data.contentJson.restaurantAbout}</p>
-        </section>
-      ) : null}
+      {
+        data.contentJson.restaurantAbout.length > 0 ? (
+          <section id="about" className="about-container">
+            <h2>About Us</h2>
+            <p>{data.contentJson.restaurantAbout}</p>
+          </section>
+        ) : null
+      }
 
-
-    </Layout>
+    </Layout >
   )
 }
 

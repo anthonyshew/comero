@@ -18,11 +18,16 @@ collections:
       - label: "Section Name"
         name: "sectionTitle"
         widget: "string"
+      - label: "Position in Menu List"
+        name: "orderPosition"
+        widget: "number"
+        hint: "This number will determine the order of your menus' sections. First is 1, second is 2, third is 3..."
       - label: "List"
         name: "menuSectionList"
         widget: "list"
         fields:
           - {label: "Menu Item", name: "menuItem", widget: "string"}
+          - {label: "Price", name: "menuItemPrice", widget: "number", valueType: "float"}
           - {label: "Description", name: "menuItemDescription", widget: "string"}
           - {label: "Image", name: "menuItemImage", widget: "image"}
   - name: "restaurantSpecials"

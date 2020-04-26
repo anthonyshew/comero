@@ -1,20 +1,15 @@
 import React, { useRef } from 'react'
 import '../styles/accordion.scss'
 
-const Accordion = ({ ...props }) => {
+export const Accordion = ({ children }) => {
     return (
         <div className="accordion-container">
-            <AccordionItem />
-            <AccordionItem />
-            <AccordionItem />
+            {children}
         </div>
     )
 }
 
-export default Accordion
-
-const AccordionItem = ({ ...props }) => {
-
+export const AccordionItem = ({ header, children }) => {
     const content = useRef(null)
 
     const toggleVisibility = () => {
@@ -23,17 +18,17 @@ const AccordionItem = ({ ...props }) => {
         if (elem.style.maxHeight) {
             elem.style.maxHeight = null
         } else {
-            elem.style.maxHeight = elem.scrollHeight + "px"
+            elem.style.maxHeight = elem.scrollHeight + 36 + "px"
         }
     }
 
     return (
         <div className="accordion-item">
             <button className="header-button" onClick={toggleVisibility} tabIndex={0}>
-                <h3>I am the accordion's header.</h3>
+                <h3>{header}</h3>
             </button>
             <div className="content" ref={content}>
-                <p>Hi! I'm an accordion's item!</p>
+                {children}
             </div>
         </div>
     )
