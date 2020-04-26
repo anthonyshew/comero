@@ -1,6 +1,6 @@
 ---
-title: Dishes
-list:
+sectionTitle: Dishes
+menuSectionList:
   - menuItemImage: /img/joseph-gonzalez-zcugjyqewe8-unsplash.jpg
     menuItem: Some French Toast
     menuItemDescription: Ya know, frenchy toasty.

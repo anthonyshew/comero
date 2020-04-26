@@ -1,0 +1,41 @@
+@import "./global.scss";
+
+.accordion-container {
+    padding: 1rem;
+
+    .accordion-item {
+        .header-button {
+            appearance: none;
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #9a181c;
+            background-color: $red;
+            color: $white;
+            font-family: $passion;
+            font-size: 24px;
+            text-align: left;
+            transition: .2s;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: .2s;
+
+            &.open {
+                transition: .2s;
+            }
+        }
+    }
+}
+
+@media (hover:hover) {
+    .accordion-container {
+        .accordion-item {
+            .header-button:hover {
+                border: 2px solid $black;
+                cursor: pointer;
+            }
+        }
+    }
+}

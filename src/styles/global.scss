@@ -66,8 +66,7 @@ sans-serif;
 $black: #000000;
 $white: #ffffff;
 $gray: #AEAEAE;
-$red: #CC0001;
-$dark-red: #800000;
+$red: #CC2026;
 $blue: #00235B;
 $light-blue: #88ABE2;
 $yellow: #F39116;
@@ -81,49 +80,10 @@ html {
     scroll-behavior: smooth;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h4,
-h5,
-h6,
-label {
-    color: $blue;
-    font-family: $raleway;
-}
-
-h2 {
-    color: $blue;
-    font-size: 48px;
-    font-weight: 900;
-    text-align: center;
+#___gatsby {
+    overflow-x: hidden;
 }
 
 .bold {
     font-weight: 900;
-}
-
-.container-link-button {
-    text-align: center;
-}
-
-.button-default,
-.link-button {
-    margin: 1rem auto 0;
-    display: inline-block;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 1rem;
-    background-color: $yellow;
-    font-family: $passion;
-    font-size: 24px;
-    text-align: center;
-
-    &:visited,
-    &:hover,
-    &:link {
-        color: $blue;
-    }
 }

@@ -16,17 +16,36 @@ collections:
      preview: false
     fields:
       - label: "Section Name"
-        name: "title"
+        name: "sectionTitle"
         widget: "string"
       - label: "List"
-        name: "list"
+        name: "menuSectionList"
         widget: "list"
         fields:
           - {label: "Menu Item", name: "menuItem", widget: "string"}
           - {label: "Description", name: "menuItemDescription", widget: "string"}
           - {label: "Image", name: "menuItemImage", widget: "image"}
+  - name: "restaurantSpecials"
+    label: "Restaurant Specials"
+    folder: "content/restaurantSpecials"
+    create: true
+    editor:
+     preview: false
+    fields:
+      - label: "Special Title"
+        name: "title"
+        widget: "string"
+      - label: "Special Subtitle"
+        name: "specialSubtitle"
+        widget: "string"
+        required: false
+      - label: "Description"
+        name: "specialDescription"
+        widget: "text"
   - name: "siteConfig"
     label: "Site Config"
+    editor:
+      preview: false
     files:
       - label: "Restaurant Info"
         name: "restaurantInfo"
@@ -39,121 +58,107 @@ collections:
           name: "restaurantMotto"
           widget: "string"
           required: false
+        - label: "Address"
+          name: "address"
+          widget: "object"
+          fields:
+            - {label: "Street Address", name: "streetAddress", widget: "string"}
+            - {label: "City", name: "city", widget: "string"}
+            - {label: "State", name: "state", widget: "select", options: ["AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY"]}
+            - {label: "Zip Code", name: "zipCode", widget: "number"}
+        - label: "About Us"
+          name: "restaurantAbout"
+          widget: text
+          required: false
+          hint: "If you leave this blank, the \"About Us\" will disappear from your site's page. Fill it in and you will have a section with your company story on your page!"
         - label: "Monday Hours"
           name: "mondayHours"
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "mondayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "mondayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "mondayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "mondayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "mondayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "mondayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
         - label: "Tuesday Hours"
           name: "tuesdayHours"
-          allow_add: false
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "tuesdayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "tuesdayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "tuesdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "tuesdayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "tuesdayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "tuesdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
         - label: "Wednesday Hours"
           name: "wednesdayHours"
-          allow_add: false
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "wednesdayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "wednesdayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "wednesdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "wednesdayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "wednesdayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "wednesdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
         - label: "Thursday Hours"
           name: "thursdayHours"
-          allow_add: false
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "thursdayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "thursdayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "thursdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "thursdayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "thursdayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "thursdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
         - label: "Friday Hours"
           name: "fridayHours"
-          allow_add: false
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "fridayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "fridayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "fridayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "fridayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "fridayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "fridayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
         - label: "Saturday Hours"
           name: "saturdayHours"
-          allow_add: false
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "saturdayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "saturdayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "saturdayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "saturdayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "saturdayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "saturdayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
         - label: "Sunday Hours"
           name: "sundayHours"
-          allow_add: false
           widget: "object"
+          hint: "To show that you are closed on this day, enter the same time in both boxes!"
           fields:
             - label: "Open"
-              name: "sundayOpen"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "sundayHourOpen", widget: "number"}
-              - {label: "AM/PM", name: "sundayHalfOpen", widget: "select", options: ["AM", "PM"], default: ["AM"]}
+              name: "open"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
             - label: "Close"
-              name: "sundayClose"
-              widget: "object"
-              fields:
-              - {label: "Hour", name: "sundayHourClose", widget: "number"}
-              - {label: "AM/PM", name: "sundayHalfClose", widget: "select", options: ["AM", "PM"], default: ["PM"]}
+              name: "close"
+              widget: "select"
+              options: ["12 AM", "12:30 AM", "1 AM", "1:30 AM", "2 AM", "2:30 AM", "3 AM", "3:30 AM", "4 AM", "4:30 AM", "5 AM", "5:30 AM", "6 AM", "6:30AM", "7 AM", "7:30 AM", "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 PM", "12:30 PM", "1 PM", "1:30 PM", "2 PM", "2:30 PM", "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM", "8 PM", "8:30 PM", "9 PM", "9:30 PM", "10 PM", "10:30 PM", "11 PM", "11:30 PM"]
