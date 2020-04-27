@@ -66,14 +66,17 @@ const Index = ({ location }) => {
             menuItemImage
           }
           sectionTitle
-          title
+          specialTitle
+          specialSubtitle
+          specialDescription
         }
       }
     }
   }
   `)
 
-  const menuSections = data.allMarkdownRemark.nodes
+  const menuSpecials = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle !== null)
+  const menuSections = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle === null)
   const { mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours } = data.contentJson
   const { streetAddress, city, state, zipCode } = data.contentJson.address
 
@@ -101,28 +104,20 @@ const Index = ({ location }) => {
       <section id="menu" className="menu-container">
         <h2>Menu</h2>
         <Accordion>
-          {menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
-            <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
-              {frontmatter.menuSectionList.map((item) => (
-                <div key={item.menuItem} className="menu-item">
-                  <h4>{item.menuItem}: ${String(item.menuItemPrice.toFixed(2))}</h4>
-                  <div className="menu-item-body">
-
-                    <img className="menu-item-image" src={item.menuItemImage} alt={item.menuItem} />
-                    <p className="menu-item-description">{item.menuItemDescription}</p>
-                  </div>
-                </div>
-              ))}
-            </AccordionItem>
-          ))}
+          {menuSpecials.length > 0 && <Specials menuSpecials={menuSpecials} />}
+          <Menu menuSections={menuSections} />
         </Accordion>
       </section>
 
       {
         data.contentJson.restaurantAbout.length > 0 ? (
-          <section id="about" className="about-container">
-            <h2>About Us</h2>
-            <p>{data.contentJson.restaurantAbout}</p>
+          <section id="about" className="about-section">
+            <div className="about-container">
+              <h2>About Us</h2>
+              <div className="about-text">
+                {data.contentJson.restaurantAbout.split("\n").map((item, i) => <p key={i}>{item}</p>)}
+              </div>
+            </div>
           </section>
         ) : null
       }
@@ -132,6 +127,36 @@ const Index = ({ location }) => {
 }
 
 export default Index
+
+const Specials = ({ menuSpecials }) => (
+  <AccordionItem header="Specials!">
+    {menuSpecials.map(({ frontmatter }) => (
+      <div key={frontmatter.specialTitle} className="menu-item specials">
+        <h4>{frontmatter.specialTitle}</h4>
+        <h5 className="special-subtitle">{frontmatter.specialSubtitle}</h5>
+        <p className="special-description">{frontmatter.specialDescription.split("\n").map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>
+      </div>
+    ))}
+  </AccordionItem>
+)
+
+const Menu = ({ menuSections }) => (
+  <>
+    {menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
+      <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
+        {frontmatter.menuSectionList.map((item) => (
+          <div key={item.menuItem} className="menu-item">
+            <h4>{item.menuItem}: ${String(item.menuItemPrice.toFixed(2))}</h4>
+            <div className="menu-item-body">
+              <img className="menu-item-image" src={item.menuItemImage} alt={item.menuItem} />
+              <p className="menu-item-description">{item.menuItemDescription}</p>
+            </div>
+          </div>
+        ))}
+      </AccordionItem>
+    ))}
+  </>
+)
 
 const Hours = ({ hoursByDay }) => {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]

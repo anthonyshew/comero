@@ -8,7 +8,7 @@
     "open": "10:30 AM",
     "close": "10:30 PM"
   },
-  "restaurantAbout": "Welcome to Smokehouse Grill Restaurant. Our founder started with a smoker and grill in his backyard. His neighbors began ranting and raving about how much they loved his culinary creations - so much that they would not stop telling him to open up a restaurant. Well, today, you are looking at what became of that idea. Smokehouse Grill Restaurant is Anytown's favorite place to get great smoked and barbequed meat and will be for decades to come.\n\nWhat's our secret sauce? Um, we're not telling...Okay, but we will share a little bit about it. We like to use a bottle that you may or may not be able to find at the store - but that's just the start. From there, we add so many herbs, spices, and other flavors that you can't hardly recognize it anymore. We have perfected our recipe after many years of hard work and we think you will be able to test it in every bite.",
+  "restaurantAbout": "Paragraph. Still the same paragraph.\n\nA new paragraph. Definitely not the old one.\n\nYet another new paragraph! Wow!",
   "restaurantMotto": "The Smokiest. The Grilliest.",
   "address": {
     "streetAddress": "123 Main St.",

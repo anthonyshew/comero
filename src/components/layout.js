@@ -2,7 +2,6 @@ import React from "react"
 import '../styles/reset.scss'
 import '../styles/global.scss'
 import '../styles/home-hero.scss'
-import '../styles/footer.scss'
 import Image from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -11,7 +10,7 @@ const Layout = ({ location, children }) => {
     query layoutQuery {
       companyLogo: file(absolutePath: {regex: "/logo.jpg/"}) {
         childImageSharp {
-          fixed(width: 320, height: 320) {
+          fixed(width: 300, height: 300) {
             ...GatsbyImageSharpFixed
           }
         }

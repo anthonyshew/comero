@@ -21,8 +21,8 @@ collections:
       - label: "Position in Menu List"
         name: "orderPosition"
         widget: "number"
-        hint: "This number will determine the order of your menus' sections. First is 1, second is 2, third is 3..."
-      - label: "List"
+        hint: "This number will determine the order of your menus' sections. First section is 1, second is 2, third is 3..."
+      - label: "Item List"
         name: "menuSectionList"
         widget: "list"
         fields:
@@ -38,7 +38,7 @@ collections:
      preview: false
     fields:
       - label: "Special Title"
-        name: "title"
+        name: "specialTitle"
         widget: "string"
       - label: "Special Subtitle"
         name: "specialSubtitle"
@@ -48,7 +48,7 @@ collections:
         name: "specialDescription"
         widget: "text"
   - name: "siteConfig"
-    label: "Site Config"
+    label: "Restaurant Information"
     editor:
       preview: false
     files:

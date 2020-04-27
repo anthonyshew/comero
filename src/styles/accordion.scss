@@ -6,15 +6,29 @@
     .accordion-item {
         .header-button {
             appearance: none;
+            display: flex;
+            flex-direction: rpw;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
             padding: 1rem;
             border: 2px solid #9a181c;
-            background-color: $red;
-            color: $white;
+            background-color: $primary-color;
+            color: $secondary-color;
             font-family: $passion;
             font-size: 24px;
             text-align: left;
             transition: .2s;
+
+            h3,
+            .arrow {
+                display: inline-block;
+            }
+
+            .arrow {
+                height: 18px;
+                transition: .2s;
+            }
         }
 
         .content {
@@ -48,21 +62,44 @@
 
                 h4 {
                     margin-bottom: .5rem;
-                    font-size: 32px;
+                    font-size: 36px;
                     font-family: $passion;
                     text-align: center;
                 }
 
                 .menu-item-body {
-                    width: 50%;
+                    width: 85%;
                     min-height: 200px;
                     margin: 0 auto;
+                    font-family: $raleway;
+                    font-size: 20px;
 
                     .menu-item-image {
                         float: right;
                         min-height: 200px;
                         max-height: 200px;
+                        padding-left: 1rem;
+                        padding-bottom: 1rem;
+                        border-top-right-radius: 1rem;
                     }
+                }
+            }
+
+            .specials {
+                h4 {
+                    margin-bottom: 0;
+                }
+
+                .special-subtitle {
+                    text-align: center;
+                    font-family: $raleway;
+                    font-size: 24px;
+                }
+
+                .special-description {
+                    padding-top: .5rem;
+                    font-size: 18px;
+                    font-family: $raleway;
                 }
             }
         }
@@ -73,7 +110,7 @@
     .accordion-container {
         .accordion-item {
             .header-button:hover {
-                border: 2px solid $black;
+                border: 2px solid $tertiary-color;
                 cursor: pointer;
             }
         }

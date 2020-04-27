@@ -3,9 +3,9 @@ sectionTitle: Appetizers
 orderPosition: 1
 menuSectionList:
   - menuItemImage: /img/joseph-gonzalez-zcugjyqewe8-unsplash.jpg
-    menuItem: Some French Toast
-    menuItemDescription: Ya know, frenchy toasty.
-    menuItemPrice: 25.5
+    menuItem: Mozzarella Sticks
+    menuItemDescription: Our house made mozzarella sticks feature the finest free-range
+    menuItemPrice: 8
   - menuItem: Pizza
     menuItemDescription: Yeah, the appetizer pizza, man.Yeah, the appetizer pizza,
       man.Yeah, the appetizer pizza, man.Yeah, the appetizer pizza, man.Yeah,
