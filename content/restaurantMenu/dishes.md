@@ -2,7 +2,7 @@
 sectionTitle: Soups & Salads
 orderPosition: 2
 menuSectionList:
-  - menuItemImage: /img/jonathan-ybema-r8a-ftlly3c-unsplash.jpg
+  - menuItemImage: /img/salad-1.jpg
     menuItem: House Salad
     menuItemDescription: Mixed baby greens, fresh lettuce, peas, tomato, mushrooms,
       eggs, bacon, and croutons.
@@ -11,7 +11,7 @@ menuSectionList:
     menuItemDescription: "Served with garlic bread! House salad served with cheddar
       cheese and your choice of two meats: Beef Brisket, Ham, Sausage, Chicken,
       Turkey, or Pulled Pork."
-    menuItemImage: /img/klara-avsenik-py_dhgdrcno-unsplash.jpg
+    menuItemImage: /img/salad-2.jpg
     menuItemPrice: 12.95
   - menuItem: Shrimp Caesar Salad
     menuItemPrice: 13.95
