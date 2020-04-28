@@ -6,7 +6,7 @@ menuSectionList:
     menuItemPrice: 13.95
     menuItemDescription: 8 oz Certified Angus Beef topped with cheese, lettuce &
       tomato on a brioche bun served with hickory-pit beans French fries.
-    menuItemImage: /img/amirali-mirhashemian-jh5xyk4rr3y-unsplash.jpg
+    menuItemImage: /img/burger.jpg
   - menuItem: Hickory Burger
     menuItemDescription: 8 oz Certified Angus Beef topped with Pulled Pork, cheese,
       onion straws, and barbecue sauce on a brioche bun served with French fries
