@@ -7,7 +7,7 @@ menuSectionList:
       Beef), Sliced Meat, 2-Piece Chicken or Pulled Pork served with coleslaw
       and French fries."
     menuItemPrice: 17.45
-    menuItemImage: /img/markus-spiske-a1yob9kbmkk-unsplash.jpg
+    menuItemImage: /img/meats.jpg
   - menuItem: Pulled Pork Platter
     menuItemPrice: 15.45
     menuItemDescription: Tender marinated pulled pork served with coleslaw and French fries.
