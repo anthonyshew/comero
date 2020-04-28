@@ -4,20 +4,19 @@ import useScrollPosition from "../hooks/useScrollPosition"
 import Arrow from "../svg/arrow-right.svg"
 
 const ReturnToTop = () => {
-    const element = useRef(null)
-    const { y } = useScrollPosition()
-
-    const handleClick = () => {
-        window.scrollTo(0, 0)
-        element.current.blur()
-    }
-
-    const handleKeyPress = (e) => {
-        if (e.key === "Enter") window.scrollTo(0, 0)
-        document.querySelector("#scrollTopFocus").focus()
-    }
-
     if (typeof window !== "undefined") {
+        const element = useRef(null)
+        const { y } = useScrollPosition()
+
+        const handleClick = () => {
+            window.scrollTo(0, 0)
+            element.current.blur()
+        }
+
+        const handleKeyPress = (e) => {
+            if (e.key === "Enter") window.scrollTo(0, 0)
+            document.querySelector("#scrollTopFocus").focus()
+        }
         return (
             <div
                 className={`return-to-top${y > 0 ? " in" : ""}`}
