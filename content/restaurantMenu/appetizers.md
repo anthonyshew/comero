@@ -6,7 +6,7 @@ menuSectionList:
     menuItemDescription: Two of every other appetizer you see on the menu! Great for big parties!
     menuItemImage: ""
     menuItemPrice: 15.99
-  - menuItemImage: /img/rcpq9e9qcuke3pyjclym_mfood1.jpg
+  - menuItemImage: /img/mozzerella-sticks.jpg
     menuItem: Mozzarella Sticks
     menuItemDescription: Our house made mozzarella sticks feature the finest
       free-range cheeses that you've never even seen before in your entire life.
@@ -20,7 +20,7 @@ menuSectionList:
       mild, medium, hot, or lava (NOT FOR THE FAINT OF HEART!) Share them or
       hoard them, we don't care. All we know is, whoever eats them is going to
       be a happy camper.
-    menuItemImage: /img/alex-holyoake-q9jnf0uuics-unsplash.jpg
+    menuItemImage: /img/chicken.jpg
   - menuItem: Zucchini Slices
     menuItemPrice: 4.99
     menuItemDescription: Get your healthy on with some zucchini! Just because
