@@ -8,7 +8,7 @@ menuSectionList:
   - menuItem: Grilled or Fried Chicken Tenders
     menuItemPrice: 14.95
     menuItemDescription: Grilled or fried chicken tenders served with cheesy corn and French fries.
-    menuItemImage: /img/brian-chan-nbxjzomynem-unsplash.jpg
+    menuItemImage: /img/more-chicken.jpg
   - menuItem: Monterey Chicken Breast (Signature Item!)
     menuItemPrice: 17.95
     menuItemDescription: 12 oz. breast topped with Dijon mustard, sliced ham,
