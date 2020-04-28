@@ -4,13 +4,13 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Comero`,
+    title: `Smokehouse Grill Restaurant`,
     author: {
       name: `Anthony Shew`,
       summary: `who develops things.`,
     },
     description: `The easiest restaurant template out there.`,
-    siteUrl: `https://comero.com/`,
+    siteUrl: `${process.env.ROOT_URL}`,
     social: {
       twitter: `/adoptmilbplayer`,
       facebook: `/groups/218122932877473/`,

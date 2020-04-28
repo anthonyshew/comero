@@ -95,14 +95,38 @@
     }
 
     .location {
-        padding: 2rem 2rem 3rem;
+        padding: 2rem;
         background-color: $secondary-color;
         border-radius: 2rem;
+
+        .map {
+            display: block;
+            margin: 0 auto;
+        }
 
         .map-subtitle {
             margin-bottom: 2rem;
             text-align: center;
             font-size: 14px;
+        }
+
+        .phone svg,
+        .email svg {
+            // position: relative;
+            // top: 5px;
+            width: 50px;
+            padding-right: 8px;
+        }
+
+        .phone,
+        .email {
+            text-align: center;
+            font-weight: 900;
+            overflow-wrap: break-word;
+        }
+
+        .phone {
+            padding: 1rem 0;
         }
     }
 }
@@ -141,6 +165,38 @@
     }
 }
 
+.footer {
+
+    .terms-of-use,
+    .attribution {
+        padding: 1rem 2rem;
+        background-color: $primary-color;
+        color: $gray;
+        line-height: 150%;
+        font-family: $raleway;
+
+        a {
+            color: $gray;
+            text-decoration: underline;
+        }
+
+        li {
+            list-style: disc;
+        }
+    }
+
+    .attribution {
+        display: block;
+        width: 100%;
+        text-align: center;
+
+        .underline {
+            text-decoration: underline;
+        }
+    }
+
+}
+
 @media (max-width: 1000px) {
     .hero-container {
         .flex-container {
@@ -153,8 +209,21 @@
     .store-container {
         flex-direction: column;
 
+        .hours,
+        .location {
+            width: 80%;
+        }
+
         .location {
             margin-top: 2rem;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .hero-container {
+        .text-content {
+            padding: 0 1.5rem;
         }
     }
 }
@@ -163,6 +232,50 @@
     .navbar {
         a {
             font-size: 20px;
+        }
+    }
+
+    .about-section {
+        padding: .5rem;
+
+        .about-container {
+            .about-text {
+                p {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .store-container {
+        flex-direction: column;
+
+        .hours,
+        .location {
+            width: 98%;
+
+            .map {
+                width: 100%;
+            }
+        }
+
+        .hours {
+
+            .day {
+                flex-direction: column;
+                width: 82%;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+@media(max-width: 400px) {
+    .hero-container {
+        h2 {
+            font-size: 36px;
         }
     }
 }

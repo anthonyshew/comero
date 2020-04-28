@@ -11,6 +11,7 @@ collections:
   - name: "restaurantMenu"
     label: "Menu Sections"
     folder: "content/restaurantMenu"
+    slug: "{{sectionTitle}}"
     create: true
     editor:
      preview: false
@@ -28,11 +29,12 @@ collections:
         fields:
           - {label: "Menu Item", name: "menuItem", widget: "string"}
           - {label: "Price", name: "menuItemPrice", widget: "number", valueType: "float"}
-          - {label: "Description", name: "menuItemDescription", widget: "string"}
-          - {label: "Image", name: "menuItemImage", widget: "image"}
+          - {label: "Description", name: "menuItemDescription", widget: "text"}
+          - {label: "Image", name: "menuItemImage", widget: "image", required: false}
   - name: "restaurantSpecials"
     label: "Restaurant Specials"
     folder: "content/restaurantSpecials"
+    slug: "{{specialTitle}}"
     create: true
     editor:
      preview: false
@@ -62,6 +64,15 @@ collections:
         - label: "Restaurant Tagline/Motto"
           name: "restaurantMotto"
           widget: "string"
+          required: false
+        - label: "Phone Number"
+          name: "phone"
+          widget: "string"
+          hint: "Enter your phone number formatted EXACTLY how you want it to display on your site. (i.e. (555) 555-555 or 555-555-555)"
+        - label: "Company Email"
+          name: "email"
+          widget: "string"
+          hint: "If you'd like a custom email address with your site's domain, send an email to anthony@shewperman.dev."
           required: false
         - label: "Address"
           name: "address"

@@ -1,13 +1,24 @@
 ---
-sectionTitle: Dishes
+sectionTitle: Soups & Salads
 orderPosition: 2
 menuSectionList:
-  - menuItemImage: /img/joseph-gonzalez-zcugjyqewe8-unsplash.jpg
-    menuItem: Some French Toast
-    menuItemDescription: Ya know, frenchy toasty.
-    menuItemPrice: 99.9
-  - menuItem: Pizza
-    menuItemDescription: Yeah, the appetizer pizza, man.
-    menuItemImage: /img/thomas-tucker-mntag_exmkw-unsplash.jpg
-    menuItemPrice: 98.9
+  - menuItemImage: /img/jonathan-ybema-r8a-ftlly3c-unsplash.jpg
+    menuItem: House Salad
+    menuItemDescription: Mixed baby greens, fresh lettuce, peas, tomato, mushrooms,
+      eggs, bacon, and croutons.
+    menuItemPrice: 6.95
+  - menuItem: Chef's Salad
+    menuItemDescription: "Served with garlic bread! House salad served with cheddar
+      cheese and your choice of two meats: Beef Brisket, Ham, Sausage, Chicken,
+      Turkey, or Pulled Pork."
+    menuItemImage: /img/klara-avsenik-py_dhgdrcno-unsplash.jpg
+    menuItemPrice: 12.95
+  - menuItem: Shrimp Caesar Salad
+    menuItemPrice: 13.95
+    menuItemDescription: Spinach mixed with greens, topped with feta cheese,
+      craisins & red onions and served with raspberry vinaigrette & garlic
+      bread.
+  - menuItem: Salad & Sliced Meat Sandwich
+    menuItemPrice: 12.95
+    menuItemDescription: House salad & 4-inch French roll, served with choice of one sliced meat.
 ---

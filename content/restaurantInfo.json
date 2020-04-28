@@ -1,19 +1,20 @@
 {
   "tuesdayHours": {
-    "open": "10 AM",
+    "open": "10:30 AM",
     "close": "9 PM"
   },
   "restaurantName": "Smokehouse Grill Restaurant",
+  "phone": "(555) 555-5555",
   "fridayHours": {
     "open": "10:30 AM",
     "close": "10:30 PM"
   },
-  "restaurantAbout": "Paragraph. Still the same paragraph.\n\nA new paragraph. Definitely not the old one.\n\nYet another new paragraph! Wow!",
+  "restaurantAbout": "Smokehouse Grill Restaurant actually started in the mind of Anthony Shew, the gentleman that programmed this very website. But let's not from keep us from writing a totally real \"About Us\" section...\nSmokehouse Grill Restaurant is Anytown, USA's favorite place to pick up smoked and grilled delights. Our founder began by making some of the best meats known to man in his smoker within the confines of his very own backyard. From there, he began taking the grill out for the spin. Soon enough, the scents of his cooking caught the noses of his neighbor's who quickly began coming to his door to find out what they were salivating about.\nAt this point, our founder's neighbors began to ask him if they could pay him for his culinary delights. Yes, they wanted to pay him for his efforts. Our founder soon outgrew his grill and moved into the restaurant space that Anytown has enjoyed for the past 20 years. Family, friends, and even out-of-towners have made their way to Smokehouse Grill Restaurant for the legendary cooking our owner has created and there's a ton more where that came from.\nThe Smokiest. The Grilliest.\n",
   "restaurantMotto": "The Smokiest. The Grilliest.",
   "address": {
     "streetAddress": "123 Main St.",
     "city": "Anytown",
-    "state": "AL",
+    "state": "AZ",
     "zipCode": 12345
   },
   "thursdayHours": {
@@ -28,8 +29,9 @@
     "open": "10:30 AM",
     "close": "9 PM"
   },
+  "email": "anthony@shewperman.dev",
   "sundayHours": {
-    "open": "10:30 PM",
+    "open": "10:30 AM",
     "close": "10:30 PM"
   },
   "mondayHours": {
