@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 // Returns an object with two keys, x and y
 
 const useScrollPosition = () => {
-    if (typeof window !== "undefined") {
-        const [scrollPosition, setScrollPosition] = useState({ x: window.pageXOffset, y: window.pageYOffset })
+    const [scrollPosition, setScrollPosition] = useState(typeof window !== "undefined" ? { x: window.pageXOffset, y: window.pageYOffset } : undefined)
 
-        useEffect(() => {
+    useEffect(() => {
+        if (typeof window !== "undefined") {
             const updatePosition = () => {
                 setScrollPosition({ x: window.pageXOffset, y: window.pageYOffset })
             }
@@ -20,9 +20,10 @@ const useScrollPosition = () => {
             })
 
             return () => window.removeEventListener("scroll", updatePosition)
-        }, [])
-        return scrollPosition
-    }
+        }
+    }, [])
+
+    return scrollPosition
 }
 
 export default useScrollPosition

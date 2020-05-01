@@ -4,9 +4,10 @@ import useScrollPosition from "../hooks/useScrollPosition"
 import Arrow from "../svg/arrow-right.svg"
 
 const ReturnToTop = () => {
+    const element = useRef(null)
+    const scroll = useScrollPosition()
+
     if (typeof window !== "undefined") {
-        const element = useRef(null)
-        const { y } = useScrollPosition()
 
         const handleClick = () => {
             window.scrollTo(0, 0)
@@ -19,7 +20,7 @@ const ReturnToTop = () => {
         }
         return (
             <div
-                className={`return-to-top${y > 0 ? " in" : ""}`}
+                className={`return-to-top${scroll.y > 0 ? " in" : ""}`}
                 onClick={handleClick}
                 onKeyPress={handleKeyPress}
                 tabIndex={0}
