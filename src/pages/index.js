@@ -12,13 +12,6 @@ import { Accordion, AccordionItem } from "../components/accordion"
 const Index = ({ location }) => {
   const data = useStaticQuery(graphql`
   query IndexQuery {
-    map: file(absolutePath: {regex: "/map.png/"}) {
-      childImageSharp {
-        fixed(width: 200, height: 200) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     restaurantInfoJson {
       restaurantName
       restaurantMotto
