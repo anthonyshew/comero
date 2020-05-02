@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Phone from "../svg/phone.svg"
 import Email from "../svg/email.svg"
+import Star from "../svg/star.svg"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -62,6 +63,7 @@ const Index = ({ location }) => {
             menuItemPrice
             menuItemDescription
             menuItemImage
+            favorite
           }
           sectionTitle
           specialTitle
@@ -129,7 +131,7 @@ const Index = ({ location }) => {
 export default Index
 
 const Specials = ({ menuSpecials }) => (
-  <AccordionItem header="Specials & Deals!">
+  <AccordionItem header={<><Star />"Specials & Deals!"</>}>
     {menuSpecials.map(({ frontmatter }) => (
       <div key={frontmatter.specialTitle} className="menu-item specials">
         <h4>{frontmatter.specialTitle}</h4>
@@ -146,7 +148,7 @@ const Menu = ({ menuSections }) => (
       <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
         {frontmatter.menuSectionList.map((item) => (
           <div key={item.menuItem} className="menu-item">
-            <h4>{item.menuItem}: ${String(item.menuItemPrice.toFixed(2))}</h4>
+            <h4>{item.favorite && <Star />} {item.menuItem}: ${String(item.menuItemPrice.toFixed(2))}</h4>
             <div className="menu-item-body" style={{ minHeight: item.menuItemImage ? "200px" : null }}>
               {item.menuItemImage && <img className="menu-item-image" src={item.menuItemImage} alt={item.menuItem} />}
               <p className="menu-item-description">{item.menuItemDescription}</p>

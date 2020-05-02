@@ -6,6 +6,7 @@ menuSectionList:
     menuItemDescription: Two of every other appetizer you see on the menu! Great for big parties!
     menuItemImage: ""
     menuItemPrice: 15.99
+    favorite: true
   - menuItemImage: /img/mozzerella-sticks.jpg
     menuItem: Mozzarella Sticks
     menuItemDescription: Our house made mozzarella sticks feature the finest
@@ -14,6 +15,7 @@ menuSectionList:
       Crispy, crunchy, tasty, and delicious. The only problem you'll have with
       them is that you'll wish you had more.
     menuItemPrice: 7.99
+    favorite: false
   - menuItem: Boneless Wings
     menuItemPrice: 6
     menuItemDescription: An 8 piece of our world famous boneless wings. Get them
@@ -21,8 +23,10 @@ menuSectionList:
       hoard them, we don't care. All we know is, whoever eats them is going to
       be a happy camper.
     menuItemImage: /img/chicken.jpg
+    favorite: true
   - menuItem: Zucchini Slices
     menuItemPrice: 4.99
     menuItemDescription: Get your healthy on with some zucchini! Just because
       they're breaded doesn't mean they're unhealthy! We promise!
+    favorite: false
 ---

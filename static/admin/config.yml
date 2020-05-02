@@ -12,6 +12,7 @@ public_folder: /img
 collections:
   - name: "restaurantMenu"
     label: "Menu Sections"
+    description: "This collection is a list of your menu's sections. In each section, you can list your items with a description and an optional image. Please note that the sections will not show up on your website in the same order that they are shown here. If you would like them to show up in a specific order, edit the 'Position In Menu List' field of the section."
     folder: "content/restaurantMenu"
     slug: "{{sectionTitle}}"
     create: true
@@ -31,10 +32,12 @@ collections:
         fields:
           - {label: "Menu Item", name: "menuItem", widget: "string"}
           - {label: "Price", name: "menuItemPrice", widget: "number", valueType: "float"}
+          - {label: "Favorite? (Gives this item a star in the menu!)", name: favorite, widget: "boolean", default: false}
           - {label: "Description", name: "menuItemDescription", widget: "text"}
           - {label: "Image", name: "menuItemImage", widget: "image", required: false}
   - name: "restaurantSpecials"
     label: "Restaurant Specials"
+    description: "Here you can list some of your specials. Give your special a 'title' and a 'description' that makes it easily identifiable when someone calls in their order and says 'I'll take the 'two for twenty' that it says on the website.'"
     folder: "content/restaurantSpecials"
     slug: "{{specialTitle}}"
     create: true

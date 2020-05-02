@@ -33,6 +33,14 @@
             &:focus {
                 outline: 3px solid $tertiary-color;
             }
+
+            .star {
+                display: inline-block;
+                height: 25px;
+                margin-right: 0.5rem;
+                position: relative;
+                top: 2px;
+            }
         }
 
         .content {
@@ -64,6 +72,12 @@
                     font-size: 36px;
                     font-family: $passion;
                     text-align: center;
+
+                    .star {
+                        height: 30px;
+                        position: relative;
+                        top: 2px;
+                    }
                 }
 
                 .menu-item-body {
