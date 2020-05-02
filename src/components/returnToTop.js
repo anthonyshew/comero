@@ -60,7 +60,6 @@ const ReturnToTop = () => {
                 onClick={handleClick}
                 onKeyPress={handleKeyPress}
                 tabIndex={0}
-                role="button"
                 ref={element}
             >
                 <Arrow style={scroll.y > 0 ? {
