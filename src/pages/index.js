@@ -19,7 +19,7 @@ const Index = ({ location }) => {
         }
       }
     }
-    contentJson {
+    restaurantInfoJson {
       restaurantName
       restaurantMotto
       restaurantAbout
@@ -82,8 +82,8 @@ const Index = ({ location }) => {
 
   const menuSpecials = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle !== null)
   const menuSections = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle === null)
-  const { mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours } = data.contentJson
-  const { streetAddress, city, state, zipCode } = data.contentJson.address
+  const { mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours } = data.restaurantInfoJson
+  const { streetAddress, city, state, zipCode } = data.restaurantInfoJson.address
 
   return (
     <Layout location={location}>
@@ -92,7 +92,7 @@ const Index = ({ location }) => {
       >
         <meta name="og:image" content="/media/aaml-logo.jpg" />
         <meta name="twitter:image" content="/media/aaml-logo.jpg" />
-        <meta name="twitter:image:alt" content={`${data.contentJson.restaurantName} Home Page`} />
+        <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Home Page`} />
       </SEO>
       <section id="store" className="store-container">
         <Hours hoursByDay={[mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours]} />
@@ -100,11 +100,11 @@ const Index = ({ location }) => {
           <h2>Our Location</h2>
           <iframe className="map" src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2757.968168405609!2d-112.27001268454082!3d46.2707368791188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x535b4221ef65f597%3A0x98562d025d6625ea!2s123%20Main%20St%2C%20Basin%2C%20MT%2059631!3m2!1d46.270736899999996!2d-112.26782399999999!5e0!3m2!1sen!2sus!4v1587792937492!5m2!1sen!2sus" title="Map" aria-hidden="false"></iframe>
           <p className="map-subtitle">(Click map to get directions)</p>
-          <p>{data.contentJson.restaurantName}</p>
+          <p>{data.restaurantInfoJson.restaurantName}</p>
           <p>{streetAddress}</p>
           <p>{city}, {state} {zipCode}</p>
-          <div className="phone"><Phone /><p>{data.contentJson.phone}</p></div>
-          {data.contentJson.email && <div className="email"><Email /><p className="email">{data.contentJson.email}</p></div>}
+          <div className="phone"><Phone /><p>{data.restaurantInfoJson.phone}</p></div>
+          {data.restaurantInfoJson.email && <div className="email"><Email /><p className="email">{data.restaurantInfoJson.email}</p></div>}
         </div>
       </section>
 
@@ -117,12 +117,12 @@ const Index = ({ location }) => {
       </section>
 
       {
-        data.contentJson.restaurantAbout.length > 0 ? (
+        data.restaurantInfoJson.restaurantAbout.length > 0 ? (
           <section id="about" className="about-section">
             <div className="about-container">
               <h2>About Us</h2>
               <div className="about-text">
-                {data.contentJson.restaurantAbout.split("\n").map((item, i) => <p key={i}>{item}</p>)}
+                {data.restaurantInfoJson.restaurantAbout.split("\n").map((item, i) => <p key={i}>{item}</p>)}
               </div>
             </div>
           </section>

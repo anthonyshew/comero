@@ -60,7 +60,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/restaurantInfo.json`,
+        path: `${__dirname}/content/restaurantInfo/restaurantInfo.json`,
         name: `siteEditor`,
       },
     },

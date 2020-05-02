@@ -18,7 +18,10 @@
 
 .hero-container {
     position: relative;
+    min-height: 90vh;
+    max-height: 90vh;
     color: $secondary-color;
+    background-color: $tertiary-color;
 
     h1 {
         font-family: $raleway;
@@ -34,7 +37,6 @@
     .hero-image {
         position: absolute;
         top: 0;
-        z-index: -1;
         width: 100vw;
         max-height: 90vh;
         filter: brightness(.5);
@@ -166,6 +168,11 @@
 }
 
 .footer {
+    background-color: $primary-color;
+
+    .accordion-container {
+        padding: 0;
+    }
 
     .terms-of-use,
     .attribution {

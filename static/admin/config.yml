@@ -56,11 +56,21 @@ collections:
     files:
       - label: "Restaurant Info"
         name: "restaurantInfo"
-        file: "content/restaurantInfo.json"
+        file: "content/restaurantInfo/restaurantInfo.json"
+        media_folder: "/content/assets"
+        public_folder: "/content/assets"
         fields:
         - label: "Restaurant Name"
           name: "restaurantName"
           widget: "string"
+        - label: "Restaurant Logo (MUST BE NAMED 'LOGO . JPG')"
+          name: "logo"
+          widget: "image"
+          pattern: ["logo.jpg", "Your image file must be named 'hero . jpg'. Rename it or convert to a JPG file if needed"]
+        - label: "Cover Image (MUST BE NAMED 'HERO . JPG')"
+          name: "hero"
+          widget: "image"
+          pattern: ["hero.jpg", "Your image file must be named 'logo . jpg'. Rename it or convert to a JPG file if needed"]
         - label: "Restaurant Tagline/Motto"
           name: "restaurantMotto"
           widget: "string"
