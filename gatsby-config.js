@@ -12,10 +12,8 @@ module.exports = {
     description: `The easiest restaurant template out there.`,
     siteUrl: `${process.env.ROOT_URL}`,
     social: {
-      twitter: `/adoptmilbplayer`,
-      facebook: `/groups/218122932877473/`,
-      instagram: `/adoptanmilbplayer/`,
-    },
+      twitter: "/theunrealashew"
+    }
   },
   developMiddleware: app => {
     app.use(
