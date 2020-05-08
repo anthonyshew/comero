@@ -85,8 +85,8 @@ const Index = ({ location }) => {
       <SEO
         title="Home"
       >
-        <meta name="og:image" content="/media/aaml-logo.jpg" />
-        <meta name="twitter:image" content="/media/aaml-logo.jpg" />
+        <meta name="og:image" content="/content/assets/hero.jpg" />
+        <meta name="twitter:image" content="/content/assets/hero.jpg" />
         <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Home Page`} />
       </SEO>
       <section id="store" className="store-container">
