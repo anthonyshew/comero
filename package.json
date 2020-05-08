@@ -2,7 +2,7 @@
   "name": "comero",
   "private": true,
   "description": "Project Comero - The Utlimate Restaurant Template",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Anthony Shew",
   "scripts": {
     "ngrok": "cd .. && ngrok http 3000",

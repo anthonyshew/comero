@@ -65,7 +65,7 @@ const Layout = ({ children }) => {
       <ReturnToTop />
       <Navbar data={data} />
       <TermsOfUse data={data} />
-      <span className="attribution">This website was created by <a href="https://shewperman.dev" target="_blank" rel="noopener noreferrer">Shewperman Web & Software Development</a> using <a href="https://comero-demo.netlify.app" target="_blank" rel="noopener noreferrer">the Comero platform</a>.</span>
+      <span className="attribution">This website was created by <a href="https://shewperman.dev" target="_blank" rel="noopener noreferrer">Shewperman Web & Software Development</a> using <a href="https://comero.netlify.app" target="_blank" rel="noopener noreferrer">the Comero platform</a>.</span>
     </>
   )
 
