@@ -8,6 +8,15 @@ menuSectionList:
       tomato on a brioche bun served with hickory-pit beans French fries.
     menuItemImage: /img/burger.jpg
     favorite: false
+    orderOptions:
+      - orderOptionName: Lettuce
+      - orderOptionName: Tomato
+        orderOptionPriceChange: 0.25
+      - orderOptionName: Onion
+        orderOptionPriceChange: 0.5
+      - orderOptionName: Pickle
+        orderOptionPriceChange: -1
+      - orderOptionName: Jalapeno
   - menuItem: Hickory Burger
     menuItemDescription: 8 oz Certified Angus Beef topped with Pulled Pork, cheese,
       onion straws, and barbecue sauce on a brioche bun served with French fries

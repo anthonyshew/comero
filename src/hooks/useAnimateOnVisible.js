@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const useAnimateOnVisible = (options) => {
+export const useAnimateOnVisible = (options) => {
     useEffect(() => {
         if (!options.element) return console.error("No element specified for useAnimateOnVisible()")
         const observer = new IntersectionObserver(([entry]) => {
@@ -29,5 +29,3 @@ const useAnimateOnVisible = (options) => {
         return () => observer.disconnect()
     }, [options.element, options.inClass, options.outClass])
 }
-
-export default useAnimateOnVisible

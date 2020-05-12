@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import useScrollPosition from "../hooks/useScrollPosition"
+import { useScrollPosition } from "../hooks/useScrollPosition"
 
 import Arrow from "../svg/arrow-right.svg"
 

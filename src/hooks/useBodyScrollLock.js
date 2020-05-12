@@ -1,16 +1,23 @@
 import { useEffect } from 'react'
 
-const useBodyScrollLock = () => {
+export const useBodyScrollLock = () => {
     useEffect(() => {
+        if (typeof window !== "undefined") {
+            const body = document.querySelector('body')
+            const preserveXScroll = window.pageXOffset
+            const preserveYScroll = window.pageYOffset
+            console.log(preserveXScroll, preserveYScroll)
 
-        const body = document.querySelector('body')
+            body.style.position = 'fixed'
 
-        body.style.position = 'fixed'
+            return () => {
+                body.style.position = 'static'
+                window.scrollTo(preserveXScroll, preserveYScroll)
 
-        return () => {
-            body.style.position = 'static'
+            }
         }
+
+        return null
+
     }, [])
 }
-
-export default useBodyScrollLock

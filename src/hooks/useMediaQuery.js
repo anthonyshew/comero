@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 // Returns a boolean stating whether the media query is true or false
 
-export default (mediaQuery) => {
+export const useMediaQuery = (mediaQuery) => {
 
     if (typeof window !== 'undefined') {
         const [isVerified, setIsVerified] = useState(!!window.matchMedia(mediaQuery).matches)

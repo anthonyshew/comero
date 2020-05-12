@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 // Returns an object with two keys, x and y
 
-const useScrollPosition = () => {
+export const useScrollPosition = () => {
     const [scrollPosition, setScrollPosition] = useState(typeof window !== "undefined" ? { x: window.pageXOffset, y: window.pageYOffset } : undefined)
 
     useEffect(() => {
@@ -25,5 +25,3 @@ const useScrollPosition = () => {
 
     return scrollPosition
 }
-
-export default useScrollPosition
