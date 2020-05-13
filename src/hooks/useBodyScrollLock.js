@@ -6,7 +6,6 @@ export const useBodyScrollLock = () => {
             const body = document.querySelector('body')
             const preserveXScroll = window.pageXOffset
             const preserveYScroll = window.pageYOffset
-            console.log(preserveXScroll, preserveYScroll)
 
             body.style.position = 'fixed'
 

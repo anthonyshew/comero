@@ -13,13 +13,141 @@
         }
     }
 
-    .item-modal {
+    .item-modal-container {
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: green;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: $black;
+
+        .item-modal-body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            height: 90%;
+            background-color: $white;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        h2 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 12px;
+            padding-right: 36px;
+            font-size: 36px;
+            font-family: $passion;
+        }
+
+        .inner-body {
+            flex: 0 1 auto;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        h3 {
+            padding-left: 12px;
+            padding-bottom: 12px;
+            font-size: 32px;
+            font-family: $passion;
+        }
+
+        .modal-description {
+            padding: 12px;
+            padding-top: 4px;
+            font-family: $raleway;
+            font-size: 18px;
+        }
+
+        .modal-image {
+            width: 100%;
+            mask-image: linear-gradient(transparent 0%, rgba(255, 255, 255, 1) 10%, rgba(255, 255, 255, 1) 90%, transparent 100%);
+        }
+
+        .modal-exit {
+            position: fixed;
+            top: 0;
+            right: 0;
+            appearance: none;
+            border: none;
+            background-color: transparent;
+            color: $black;
+            font-family: $passion;
+            font-size: 36px;
+            cursor: pointer;
+
+            .x-svg {
+                padding-top: 14px;
+                padding-right: 8px;
+                width: 24px;
+                height: 24px;
+                stroke: $black;
+            }
+        }
+
+        .checkbox-container {
+            position: relative;
+            padding: 4px 12px;
+            font-size: 18px;
+            font-family: $raleway;
+
+            .checkbox {
+                position: relative;
+                display: inline-block;
+                padding: 0;
+                width: 18px;
+                height: 18px;
+                min-width: initial;
+                border: 2px solid $primary-color;
+                appearance: none;
+                transition: all .25s;
+
+                &:checked {
+                    background-color: $primary-color;
+
+                    &:after {
+                        content: '\2713';
+                        position: absolute;
+                        top: -2px;
+                        left: 2px;
+                        color: $white;
+                        font-size: 14px;
+                        outline: none;
+                    }
+                }
+            }
+
+
+            .checkbox-label {
+                display: inline-block;
+                width: 216px;
+                min-width: initial;
+                max-width: initial;
+                padding-left: .5rem;
+                font-size: 18px;
+                font-weight: 400;
+            }
+        }
+
+        .add-to-order-button {
+            width: 100%;
+            padding: 1rem 0;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            border: none;
+            background-color: $primary-color;
+            color: $white;
+            font-family: $passion;
+            font-size: 28px;
+            appearance: none;
+            cursor: pointer;
+        }
     }
 }
 

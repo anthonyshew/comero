@@ -6,6 +6,7 @@ import '../styles/order-app.scss'
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock"
 import { Accordion, AccordionItem } from "../components/accordion"
 import Star from "../svg/star.svg"
+import X from "../svg/x.svg"
 
 export default ({ ...props }) => {
     const data = useStaticQuery(graphql`
@@ -83,12 +84,52 @@ const Menu = ({ menuSections, setModalData }) => {
 }
 
 const ItemModal = ({ modalData, setModalData, ...props }) => {
-    console.log(modalData)
+    const [basePrice] = useState(modalData.menuItemPrice)
+    const [currentPrice, setCurrentPrice] = useState(basePrice)
     useBodyScrollLock()
+    const { register, handleSubmit, watch } = useForm()
+
+    const selectedOptions = watch(modalData.orderOptions.map(option => option.orderOptionName))
+
+    useEffect(() => {
+        const toAdd = []
+
+        const activeKeys = Object.keys(selectedOptions).filter(key => selectedOptions[key] === true).forEach((key) => {
+            modalData.orderOptions.map((option) => {
+                if (option.orderOptionName === key) {
+                    toAdd.push(option.orderOptionPriceChange)
+                }
+            })
+        })
+
+        const sum = toAdd.reduce((a, b) => a + b, 0)
+
+        setCurrentPrice(basePrice + sum)
+    }, [selectedOptions])
+
+    const addToOrder = data => {
+        console.log(data)
+    }
 
     return (
-        <div className="item-modal" onClick={() => setModalData({})}>
-            {JSON.stringify(modalData)}
+        <div className="item-modal-container">
+            <form className="item-modal-body" onSubmit={handleSubmit(addToOrder)}>
+                <h2>{modalData.menuItem}</h2>
+                <section className="inner-body">
+                    {modalData.menuItemImage && <img className="modal-image" src={modalData.menuItemImage} alt={modalData.menuItem} />}
+                    <p className="modal-description">{modalData.menuItemDescription}</p>
+                    <button className="modal-exit" onClick={() => setModalData({})}><X /></ button>
+                    {modalData.orderOptions && <h3>Options</h3>}
+                    {modalData.orderOptions && modalData.orderOptions.map((option) => (
+                        <div key={option.orderOptionName} className="checkbox-container">
+                            <input className="checkbox" type="checkbox" name={option.orderOptionName} ref={register} />
+                            <label className="checkbox-label" htmlFor={option.orderOptionName}>
+                                {option.orderOptionName} {option.orderOptionPriceChange > 0 && <>(+ ${option.orderOptionPriceChange.toFixed(2)})</>}</label>
+                        </div>
+                    ))}
+                </section>
+                <input type="submit" className="add-to-order-button" value={"Add to Order - $" + currentPrice.toFixed(2)} />
+            </form>
         </div>
     )
 }

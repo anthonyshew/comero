@@ -10,13 +10,17 @@ menuSectionList:
     favorite: false
     orderOptions:
       - orderOptionName: Lettuce
+        orderOptionPriceChange: 0
       - orderOptionName: Tomato
         orderOptionPriceChange: 0.25
       - orderOptionName: Onion
         orderOptionPriceChange: 0.5
       - orderOptionName: Pickle
-        orderOptionPriceChange: -1
+        orderOptionPriceChange: 0
       - orderOptionName: Jalapeno
+        orderOptionPriceChange: 0
+      - orderOptionPriceChange: 0
+        orderOptionName: Poop
   - menuItem: Hickory Burger
     menuItemDescription: 8 oz Certified Angus Beef topped with Pulled Pork, cheese,
       onion straws, and barbecue sauce on a brioche bun served with French fries

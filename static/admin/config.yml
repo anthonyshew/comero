@@ -52,7 +52,7 @@ collections:
             hint: "This list will show up for this item as the toppings, sauces, etc. in your ordering app!"
             fields:
               - {label: "Name", name: "orderOptionName", widget: "string"}
-              - {label: "Price Change", name: "orderOptionPriceChange", required: false, widget: "number", valueType: "float", step: .25, hint: "Be careful! This number is a dollar amount! If left empty or zero, we won't show a price change for this option."}
+              - {label: "Price Change", name: "orderOptionPriceChange", required: false, widget: "number", valueType: "float", min: 0, default: 0, step: .25, hint: "Be careful! This number is a dollar amount! If left empty or zero, we won't show a price change for this option."}
   - name: "restaurantSpecials"
     label: "Restaurant Specials"
     description: "Here you can list some of your specials. Give your special a 'title' and a 'description' that makes it easily identifiable when someone calls in their order and says 'I'll take the 'two for twenty' that it says on the website.'"
