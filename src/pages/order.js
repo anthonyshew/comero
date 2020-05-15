@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { useForm } from "react-hook-form"
 import '../styles/order-app.scss'
 
@@ -37,28 +37,41 @@ export default ({ ...props }) => {
               }
             }
           }
+          restaurantInfoJson {
+              restaurantName
+          }
     }
     `)
 
-    const [order, setOrder] = useState(typeof localStorage !== "undefined" && localStorage.getItem("order"))
+    const [order, setOrder] = useState(typeof localStorage !== "undefined" && JSON.parse(localStorage.getItem("order")))
     const [modalData, setModalData] = useState({})
+    const [isCheckoutButtonVisible, setIsCheckoutButtonVisible] = useState(false)
 
     useEffect(() => {
         if (order === null) {
             localStorage.setItem("order", JSON.stringify({ orderItems: [] }))
-            setOrder(JSON.stringify({ orderItems: [] }))
+            setOrder(({ orderItems: [] }))
         }
     }, [order])
 
+    useEffect(() => {
+        if (order && order.orderItems.length > 0) {
+            setIsCheckoutButtonVisible(true)
+        } else {
+            setIsCheckoutButtonVisible(false)
+        }
+    }, [order])
 
     const menuSections = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle === null)
 
     return (
         <div className="order-app">
+            <h1>{data.restaurantInfoJson.restaurantName}'s Menu</h1>
             <Accordion>
                 <Menu setModalData={setModalData} menuSections={menuSections} />
             </Accordion>
-            {Object.getOwnPropertyNames(modalData).length !== 0 && <ItemModal modalData={modalData} setModalData={setModalData} />}
+            {Object.getOwnPropertyNames(modalData).length !== 0 && <ItemModal modalData={modalData} setModalData={setModalData} setOrder={setOrder} />}
+            {isCheckoutButtonVisible && Object.getOwnPropertyNames(modalData.length === 0) && <CheckoutButton />}
         </div>
     )
 }
@@ -87,7 +100,7 @@ const Menu = ({ menuSections, setModalData }) => {
     )
 }
 
-const ItemModal = ({ modalData, setModalData, ...props }) => {
+const ItemModal = ({ modalData, setModalData, setOrder }) => {
     const [basePrice] = useState(modalData.menuItemPrice)
     const [currentPrice, setCurrentPrice] = useState(basePrice)
     const [quantity, setQuantity] = useState(1)
@@ -111,8 +124,8 @@ const ItemModal = ({ modalData, setModalData, ...props }) => {
 
         const sum = toAdd.reduce((a, b) => a + b, 0)
 
-        setCurrentPrice(basePrice + sum)
-    }, [selectedOptions, basePrice, modalData.orderOptions])
+        setCurrentPrice((basePrice + sum) * quantity)
+    }, [selectedOptions, basePrice, modalData.orderOptions, quantity])
 
     const addToOrder = data => {
         const userSelections = Object.entries(data)
@@ -138,8 +151,9 @@ const ItemModal = ({ modalData, setModalData, ...props }) => {
 
         if (!orderChangedBool) order.orderItems.push(toAdd)
 
-        console.log(order)
         localStorage.setItem("order", JSON.stringify(order))
+        setOrder(order)
+        setModalData({})
     }
 
     return (
@@ -170,3 +184,7 @@ const ItemModal = ({ modalData, setModalData, ...props }) => {
         </div>
     )
 }
+
+const CheckoutButton = ({ ...props }) => (
+    <Link to="/checkout" className="checkout-button">View Order & Checkout</Link>
+)

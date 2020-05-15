@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const serverless = require('serverless-http')
 const sendGrid = require('@sendgrid/mail')
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 const app = express()
 const router = express.Router()
@@ -9,6 +10,25 @@ const router = express.Router()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 sendGrid.setApiKey(process.env.SENDGRID_API_KEY)
+
+router.post("/checkout", async (req, res) => {
+    const clientSecret = await stripe.paymentIntents.create({
+        amount: req.body.checkoutAmount * 100,
+        currency: "usd"
+    }).catch(err => console.log(err))
+
+    res.send(clientSecret)
+})
+
+router.post('/checkout-success', (req, res) => {
+    console.log('much success')
+    res.send({
+        statusCode: 200,
+        success: true,
+        errors: [],
+        data: {}
+    })
+})
 
 router.post('/contact-us', (req, res) => {
     const { name, email, message } = req.body

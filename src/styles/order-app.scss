@@ -2,6 +2,8 @@
 
 .order-app {
     .accordion-container {
+        padding-bottom: 3rem;
+
         .content {
             .menu-item {
                 width: 100%;
@@ -187,6 +189,19 @@
             appearance: none;
             cursor: pointer;
         }
+    }
+
+    .checkout-button {
+        position: fixed;
+        bottom: .5rem;
+        right: .5rem;
+        padding: .5rem .8rem;
+        border: 2px solid $primary-color;
+        border-radius: 1rem;
+        background-color: $tertiary-color;
+        color: $white;
+        font-family: $passion;
+        font-size: 18px;
     }
 }
 
