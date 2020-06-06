@@ -2,6 +2,7 @@
 @import 'variables.scss';
 
 .navbar {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,6 +15,14 @@
         color: $secondary-color;
         font-family: $passion;
         font-size: 32px;
+    }
+
+    .nav-special {
+        padding: .2rem 12px;
+        border-radius: 1rem;
+        background-color: $secondary-color;
+        color: $primary-color;
+        transition: .2s;
     }
 }
 
@@ -115,8 +124,6 @@
 
         .phone svg,
         .email svg {
-            // position: relative;
-            // top: 5px;
             width: 50px;
             padding-right: 8px;
         }
@@ -136,11 +143,24 @@
 
 .menu-container {
     padding-top: 1rem;
+    text-align: center;
 
     h2 {
         font-family: $passion;
         font-size: 48px;
         text-align: center;
+    }
+
+    .order-link {
+        display: inline-block;
+        margin: 1rem;
+        padding: .2rem 12px;
+        border-radius: 1rem;
+        background-color: $primary-color;
+        color: $secondary-color;
+        font-family: $passion;
+        font-size: 48px;
+        transition: .2s;
     }
 }
 
@@ -205,11 +225,30 @@
 
 }
 
+@media (hover:hover) {
+
+    .navbar .nav-special:hover,
+    .menu-container .order-link:hover {
+        background-color: $tertiary-color;
+        color: $secondary-color;
+    }
+}
+
 @media (max-width: 1000px) {
     .hero-container {
         .flex-container {
             flex-direction: column;
         }
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .nav-special {
+        position: absolute;
+        z-index: 1;
+        bottom: -2rem;
+        right: 1rem;
+
     }
 }
 
@@ -233,6 +272,11 @@
         .text-content {
             padding: 0 1.5rem;
         }
+    }
+
+    .navbar .nav-special {
+        bottom: -1rem;
+        font-size: 20px;
     }
 }
 
@@ -280,7 +324,7 @@
     }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
     .hero-container {
         h2 {
             font-size: 36px;

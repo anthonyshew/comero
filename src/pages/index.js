@@ -1,6 +1,6 @@
 import React from "react"
 import '../styles/index.scss'
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Phone from "../svg/phone.svg"
 import Email from "../svg/email.svg"
@@ -104,6 +104,7 @@ const Index = ({ location }) => {
       </section>
 
       <section id="menu" className="menu-container">
+        <Link to="/order" className="order-link">Order online!</Link>
         <h2>Menu</h2>
         <Accordion>
           {menuSpecials.length > 0 && <Specials menuSpecials={menuSpecials} />}

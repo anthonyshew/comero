@@ -2,7 +2,7 @@ import React from "react"
 import '../styles/reset.scss'
 import '../styles/global.scss'
 import Image from "gatsby-image"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import ReturnToTop from "./returnToTop"
 import { Accordion, AccordionItem } from "./accordion"
@@ -86,6 +86,7 @@ const Navbar = ({ data, scrollTopFocus }) => (
     <a href="#store">Location & Hours</a>
     <a href="#menu">Menu</a>
     {data.restaurantInfoJson.restaurantAbout.length > 0 ? <a href="#about">About</a> : null}
+    <Link to="/order" className="nav-special">Order online!</Link>
   </nav>
 )
 
