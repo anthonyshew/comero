@@ -37,7 +37,7 @@ export default ({ ...props }) => {
 
     // const deliveryBool = data.allRestaurantInfoJson.edges[0].node.deliveryBool
 
-    const [order, setOrder] = useState(typeof localStorage !== "undefined" && JSON.parse(localStorage.getItem("order")))
+    const [order] = useState(typeof localStorage !== "undefined" && JSON.parse(localStorage.getItem("order")))
 
     return (
         <div className="checkout-app">
@@ -45,13 +45,13 @@ export default ({ ...props }) => {
             {order.orderItems.map((item, index) => {
                 return <p key={index}>{item.menuItem}{item.options.length > 0 && <span>, with options: {item.options.map(option => <span key={option}>{option}</span>)}</span>}, quantity: {item.quantity}</p>
             })}
-            <StripeWrapper />
+            <StripeWrapper order={order} />
 
         </div>
     )
 }
 
-const Form = ({ ...props }) => {
+const Form = ({ order }) => {
     const { register, handleSubmit, errors } = useForm()
     const stripe = useStripe()
     const elements = useElements()
@@ -81,7 +81,7 @@ const Form = ({ ...props }) => {
                             address: {
                                 city: formData.City,
                                 country: "US",
-                                line1: formData.Stree_Address,
+                                line1: formData.Street_address,
                                 postal_code: formData.Postal_Code,
                                 state: formData.State
                             }
@@ -98,7 +98,10 @@ const Form = ({ ...props }) => {
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify(formData)
+                        body: JSON.stringify({
+                            order: JSON.parse(localStorage.getItem("order")),
+                            data: formData
+                        })
                     })
                         .then(res => window.location.href = '/thank-you')
                 }
@@ -112,7 +115,8 @@ const Form = ({ ...props }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <input type="text" placeholder="First name" name="First_name" ref={register({ required: true, maxLength: 80 })} />
             <input type="text" placeholder="Last name" name="Last_name" ref={register({ required: true, maxLength: 100 })} />
-            <input type="text" placeholder="Street Address" name="Street_Address" ref={register({ required: true })} />
+            <input type="email" placeholder="Email" name="email" ref={register({ required: true, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
+            <input type="text" placeholder="Street Address" name="Street_address" ref={register({ required: true })} />
             <input type="text" placeholder="City" name="City" ref={register({ required: true })} />
             <select name="State" ref={register}>
                 <option value="AL">Alabama</option>
@@ -197,8 +201,8 @@ const Form = ({ ...props }) => {
     )
 }
 
-const StripeWrapper = ({ key }) => (
+const StripeWrapper = ({ order }) => (
     <Elements stripe={stripePromise} options={{ fonts: [{ cssSrc: "https://fonts.googleapis.com/css?family=Raleway&display=swap" }] }}>
-        <Form />
+        <Form order={order} />
     </Elements >
 )
