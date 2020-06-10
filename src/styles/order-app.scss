@@ -59,9 +59,6 @@
         }
 
         .inner-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             flex: 1 auto;
             padding-bottom: 1rem;
             overflow-x: hidden;
@@ -100,8 +97,9 @@
             cursor: pointer;
 
             .x-svg {
-                padding-top: 14px;
-                padding-right: 8px;
+                position: absolute;
+                top: 14px;
+                right: 14px;
                 width: 24px;
                 height: 24px;
                 stroke: $black;
@@ -179,14 +177,21 @@
 
         .quantity-button {
             appearance: none;
+            display: inline-block;
             width: 48px;
             height: 48px;
+            padding: 0;
             border: 4px solid $tertiary-color;
-            border-radius: 100%;
+            border-radius: 1rem;
             background-color: transparent;
-            font-size: 48px;
-            line-height: 24px;
+            font-size: 36px;
+            line-height: 36px;
             cursor: pointer;
+
+            .minus-fix {
+                position: relative;
+                top: -2px;
+            }
         }
 
         .chef-note-label {
@@ -213,7 +218,7 @@
             padding: 1rem 0;
             border-bottom-left-radius: 1rem;
             border-bottom-right-radius: 1rem;
-            border: none;
+            border-bottom: 2px solid $primary-color;
             background-color: $primary-color;
             color: $white;
             font-family: $passion;

@@ -10,8 +10,6 @@ import { Accordion, AccordionItem } from "../components/accordion"
 import OrderStepper from "../components/orderStepper"
 import Star from "../svg/star.svg"
 import X from "../svg/x.svg"
-import Minus from "../svg/minus.svg"
-import Plus from "../svg/plus.svg"
 
 export default ({ ...props }) => {
     const data = useStaticQuery(graphql`
@@ -181,9 +179,9 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
                     ))}
                     <label htmlFor="quantity" className="quantity-label">Quantity</label>
                     <div className="quantity-flex">
-                        <button className="quantity-button" type="button" onClick={() => setQuantity(quantity >= 2 ? quantity - 1 : 1)}><Minus /></button>
+                        <button className="quantity-button" type="button" onClick={() => setQuantity(quantity >= 2 ? quantity - 1 : 1)}><span className="minus-fix">-</span></button>
                         <input className="quantity-input" type="number" min="1" name="quantity" value={quantity} readOnly={true} ref={register} />
-                        <button className="quantity-button" type="button" onClick={() => setQuantity(quantity + 1)}><Plus /></button>
+                        <button className="quantity-button" type="button" onClick={() => setQuantity(quantity + 1)}><span>+</span></button>
                     </div>
                     <label className="chef-note-label" htmlFor="chef_note">Notes to Chef</label>
                     <input className="chef-note" type="text" name="chef_note" ref={register} />
