@@ -1,0 +1,54 @@
+@import "variables";
+
+.order-stepper-container {
+
+    h1 {
+        text-align: center;
+        font-family: $passion;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .step {
+        width: 25%;
+        margin-top: .5rem;
+        padding: .5rem;
+        border: 2px solid $primary-color;
+        background-color: $secondary-color;
+        font-family: $raleway;
+        font-weight: 900;
+        text-align: center;
+
+        &.one {
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+        }
+
+        &.two {
+            margin-left: .2rem;
+            margin-right: .2rem;
+        }
+
+        &.three {
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+
+        &.active {
+            background-color: $primary-color;
+            color: $secondary-color;
+        }
+    }
+
+    .wait-time {
+        margin-top: .5rem;
+        font-family: $raleway;
+        font-weight: 700;
+        text-align: center;
+    }
+}

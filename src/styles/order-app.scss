@@ -1,6 +1,16 @@
 @import "variables.scss";
 
 .order-app {
+    min-height: 100vh;
+    background-image: url("/img/purty-wood.png");
+
+    h2 {
+        margin-top: 1rem;
+        font-family: $passion;
+        font-size: 32px;
+        text-align: center;
+    }
+
     .accordion-container {
         padding-bottom: 3rem;
 
@@ -26,13 +36,14 @@
 
         .item-modal-body {
             position: absolute;
-            top: 50%;
+            top: 47.5%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             width: 90%;
             height: 90%;
+            max-height: 90%;
             background-color: $white;
             border-radius: 1rem;
             overflow: hidden;
@@ -48,6 +59,9 @@
         }
 
         .inner-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             flex: 1 auto;
             padding-bottom: 1rem;
             overflow-x: hidden;
@@ -157,7 +171,6 @@
             display: inline-block;
             width: 52px;
             height: 52px;
-            margin-left: 14px;
             text-align: center;
             line-height: 52px;
             font-size: 32px;
@@ -174,6 +187,25 @@
             font-size: 48px;
             line-height: 24px;
             cursor: pointer;
+        }
+
+        .chef-note-label {
+            display: block;
+            width: 95%;
+            margin: 0 auto;
+            margin-top: 2rem;
+            font-family: $passion;
+            font-size: 24px;
+        }
+
+        .chef-note {
+            display: block;
+            width: 95%;
+            margin: 0 auto;
+            padding: .4rem .6rem;
+            border: 2px solid $primary-color;
+            border-radius: .5rem;
+            font-family: $raleway;
         }
 
         .add-to-order-button {
@@ -193,15 +225,22 @@
 
     .checkout-button {
         position: fixed;
-        bottom: .5rem;
-        right: .5rem;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
         padding: .5rem .8rem;
-        border: 2px solid $primary-color;
-        border-radius: 1rem;
-        background-color: $tertiary-color;
-        color: $white;
+        border-top: 2px solid $tertiary-color;
+        border-left: 2px solid $tertiary-color;
+        border-right: 2px solid $tertiary-color;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: $secondary-color;
+        color: $primary-color;
         font-family: $passion;
-        font-size: 18px;
+        text-align: center;
+        font-size: 200%;
+        transition: .2s;
     }
 }
 
@@ -213,6 +252,20 @@
                     background-color: $gray;
                 }
             }
+        }
+
+        .checkout-button:hover {
+            background-color: $primary-color;
+            color: $secondary-color;
+
+        }
+    }
+}
+
+@media (max-width: 376px) {
+    .order-app {
+        .checkout-button {
+            font-size: 130%;
         }
     }
 }

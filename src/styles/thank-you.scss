@@ -1,0 +1,53 @@
+@import "variables";
+
+.thank-you-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("/img/purty-wood.png");
+    font-family: $raleway;
+
+    .company-logo {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        border-radius: 1rem;
+    }
+
+    .flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 95%;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $primary-color;
+        color: $white;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+        font-family: $passion;
+        font-size: 28px;
+    }
+
+    .wait-time {
+        margin-bottom: 1rem;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .back-to-index {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $white;
+        color: $primary-color;
+        font-family: $passion;
+        font-size: 18px;
+    }
+}

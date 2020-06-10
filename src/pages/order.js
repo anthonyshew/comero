@@ -7,6 +7,7 @@ import { checkArrayEquality } from "../utils/checkArrayEquality"
 
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock"
 import { Accordion, AccordionItem } from "../components/accordion"
+import OrderStepper from "../components/orderStepper"
 import Star from "../svg/star.svg"
 import X from "../svg/x.svg"
 import Minus from "../svg/minus.svg"
@@ -66,7 +67,8 @@ export default ({ ...props }) => {
 
     return (
         <div className="order-app">
-            <h1>{data.restaurantInfoJson.restaurantName}'s Menu</h1>
+            <OrderStepper activeStep={1} />
+            <h2>Pick out your food!</h2>
             <Accordion>
                 <Menu setModalData={setModalData} menuSections={menuSections} />
             </Accordion>
@@ -128,15 +130,20 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
     }, [selectedOptions, basePrice, modalData.orderOptions, quantity])
 
     const addToOrder = data => {
+        console.log(data)
         const userSelections = Object.entries(data)
         //Remove quantity from a list of menu item options
         userSelections.pop()
+
         const toAdd = {
             menuItem: modalData.menuItem,
+            image: modalData.menuItemImage,
             options: userSelections
                 .map(option => option[1] === true ? option[0] : null)
                 .filter(option => option !== null),
-            quantity: Number(data.quantity)
+            quantity: Number(data.quantity),
+            price: currentPrice,
+            chefNote: data.chef_note
         }
 
         let order = JSON.parse(localStorage.getItem("order"))
@@ -178,6 +185,8 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
                         <input className="quantity-input" type="number" min="1" name="quantity" value={quantity} readOnly={true} ref={register} />
                         <button className="quantity-button" type="button" onClick={() => setQuantity(quantity + 1)}><Plus /></button>
                     </div>
+                    <label className="chef-note-label" htmlFor="chef_note">Notes to Chef</label>
+                    <input className="chef-note" type="text" name="chef_note" ref={register} />
                 </section>
                 <input type="submit" className="add-to-order-button" value={"Add to Order - $" + currentPrice.toFixed(2)} />
             </form>
@@ -186,5 +195,5 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
 }
 
 const CheckoutButton = ({ ...props }) => (
-    <Link to="/checkout" className="checkout-button">View Order & Checkout</Link>
+    <Link to="/order-review" className="checkout-button">View Order & Checkout</Link>
 )

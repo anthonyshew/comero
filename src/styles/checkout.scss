@@ -1,3 +1,178 @@
 @import 'variables.scss';
 
-.checkout-app {}
+.checkout-app {
+    min-height: 100vh;
+    padding: 0 1rem;
+    background-image: url("/img/purty-wood.png");
+
+    h2 {
+        margin-top: 1rem;
+        font-family: $passion;
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .back-to-confirm {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        width: 100%;
+        margin-top: 1rem;
+        padding: .5rem 0;
+        border-radius: 1rem;
+        background-color: $tertiary-color;
+        color: $secondary-color;
+        font-family: $passion;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .section {
+        margin: 1rem 0;
+        padding: 1rem 2%;
+        border-radius: 1rem;
+        background-color: $primary-color;
+
+        h3 {
+            color: $secondary-color;
+            font-family: $passion;
+            font-size: 32px;
+            text-align: center;
+        }
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .input-container {
+        position: relative;
+        display: inline-block;
+        min-width: 130px;
+        width: 33%;
+        margin: 0 .2rem;
+        border-radius: 1rem;
+
+        label {
+            position: absolute;
+            left: -100000px;
+            display: block;
+            color: $secondary-color;
+            font-family: $raleway;
+            font-weight: 900;
+        }
+
+        input,
+        select {
+            width: 100%;
+            margin: .2rem 0;
+            padding: .4rem .6rem;
+            border: 2px solid $gray;
+            border-radius: .5rem;
+            font-family: $raleway;
+            background-color: $white;
+            font-size: 18px;
+        }
+
+        .full-width-input {
+            width: 100%;
+        }
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .select {
+        width: 25%;
+        min-width: 80px;
+    }
+
+    .city,
+    .postal {
+        min-width: initial;
+    }
+
+    .stripe-label {
+        display: block;
+        margin-top: 1rem;
+        color: $white;
+        font-family: $passion;
+        font-size: 24px;
+
+        &.small {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .stripe-form-input {
+        padding: .4rem .6rem;
+        background-color: white;
+        border: 2px solid $gray;
+        border-radius: .5rem;
+
+        &.expiry {
+            width: 10%;
+            min-width: 100px;
+            margin: 0 auto;
+        }
+
+        &.cvc {
+            width: 10%;
+            min-width: 60px;
+            margin: 0 auto;
+        }
+    }
+
+    .stripe-error,
+    .stripe-error-placeholder {
+        position: relative;
+        top: 50px;
+        margin-top: 1rem;
+        height: 24px;
+        font-family: $raleway;
+        color: $white;
+        text-align: center;
+    }
+
+    .stripe-error-placeholder {
+        top: 0;
+    }
+
+    .stripe-error {
+        animation: .2s fadeInSlideUp ease forwards;
+
+        @keyframes fadeInSlideUp {
+            100% {
+                top: 0;
+            }
+        }
+    }
+
+    .submit-container {
+        text-align: center;
+
+        .submit {
+            appearance: none;
+            margin-bottom: 1rem;
+            padding: .4rem .6rem;
+            background-color: $primary-color;
+            color: $secondary-color;
+            border: none;
+            border-radius: 1rem;
+            font-family: $passion;
+            font-size: 36px;
+            cursor: pointer;
+
+            &:disabled {
+                background-color: $gray;
+            }
+        }
+    }
+}

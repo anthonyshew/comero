@@ -1,0 +1,165 @@
+@import "variables";
+
+.order-app-review {
+    min-height: 100vh;
+    background-image: url("/img/purty-wood.png");
+
+    h2 {
+        margin-top: 1rem;
+        font-family: $passion;
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .review-container {
+        position: relative;
+        margin: 0 1rem;
+        margin-top: 1rem;
+        padding-bottom: 5rem;
+
+        .back-to-menu {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-block;
+            width: 100%;
+            padding: .5rem 0;
+            border-radius: 1rem;
+            background-color: $tertiary-color;
+            color: $secondary-color;
+            font-family: $passion;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .order-item {
+            position: relative;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 1rem;
+            background-color: $primary-color;
+            background-position: center;
+            background-size: cover;
+            color: $secondary-color;
+            font-family: $raleway;
+
+            .remove {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                appearance: none;
+                width: 50px;
+                height: 50px;
+                padding: 10px;
+                border: none;
+                border-radius: 100%;
+                background-color: transparent;
+                cursor: pointer;
+
+                .trash-can {
+                    width: 100%;
+                }
+            }
+
+            h3 {
+                max-width: 75%;
+                font-size: 24px;
+                font-weight: 900;
+            }
+
+            p {
+                max-width: 75%;
+            }
+
+            .options {
+                margin-top: .5rem;
+            }
+
+            .quantity-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .quantity {
+                    margin: 1rem 0;
+                    font-weight: 900;
+                    font-size: 24px;
+                }
+
+                .quantity-button {
+                    margin: 0 .5rem;
+                    padding: .4rem .8rem;
+                    appearance: none;
+                    border: none;
+                    border-radius: 1rem;
+                    background-color: $secondary-color;
+                    color: $primary-color;
+                    font-family: $raleway;
+                    font-size: 16px;
+                    font-weight: 900;
+                    cursor: pointer;
+                }
+            }
+
+            .chef-note {
+                margin-top: 1rem;
+            }
+        }
+
+        .empty-order {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+
+            p {
+                font-family: $raleway;
+                font-size: 32px;
+                text-align: center;
+            }
+
+            a {
+                display: inline-block;
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 1rem;
+                background-color: $primary-color;
+                color: $secondary-color;
+                font-family: $passion;
+                font-size: 32px;
+            }
+        }
+    }
+
+    .confirm-order-review {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        padding: .5rem .8rem;
+        border-top: 2px solid $tertiary-color;
+        border-left: 2px solid $tertiary-color;
+        border-right: 2px solid $tertiary-color;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: $secondary-color;
+        color: $primary-color;
+        font-family: $passion;
+        text-align: center;
+        font-size: 40px;
+        transition: .2s;
+    }
+}
+
+@media (hover:hover) {
+    .order-app-review {
+        .confirm-order-review:hover {
+            background-color: $primary-color;
+            color: $secondary-color;
+
+        }
+    }
+}

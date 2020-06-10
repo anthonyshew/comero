@@ -2,7 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const serverless = require('serverless-http')
 const sendGrid = require('@sendgrid/mail')
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const clientStripe = require('stripe')(process.env.STRIPE_CLIENT_SECRET_KEY)
+const devStripe = require('stripe')(process.env.STRIPE_DEV_SECRET_KEY)
 
 const app = express()
 const router = express.Router()
@@ -39,8 +40,8 @@ const getDateTime = () => {
 }
 
 router.post("/checkout", async (req, res) => {
-    const clientSecret = await stripe.paymentIntents.create({
-        amount: req.body.checkoutAmount * 100,
+    const clientSecret = await clientStripe.paymentIntents.create({
+        amount: req.body.checkoutAmount,
         currency: "usd"
     }).catch(err => console.log(err))
 
@@ -65,21 +66,30 @@ router.post('/checkout-success', (req, res) => {
             </div>`
         ))}
         <div><h1>Customer Information</h1></div>
-        <div><h2 style="display: inline">First Name: </h2><span style="font-size: 14px">${data.First_name}</span></div>
-        <div><h2 style="display: inline">Last Name: </h2><span style="font-size: 14px">${data.Last_name}</span></div>
-        <div><h2 style="display: inline">Street Address: </h2><span style="font-size: 14px">${data.Street_address}</span></div>
-        <div><h2 style="display: inline">City: </h2><span style="font-size: 14px">${data.City}</span></div>
-        <div><h2 style="display: inline">State: </h2><span style="font-size: 14px">${data.State}</span></div>
-        <div><h2 style="display: inline">Postal Code: </h2><span style="font-size: 14px">${data.Postal_Code}</span></div>
+        <div><h2 style="display: inline">First Name: </h2><span style="font-size: 14px">${data.first_name}</span></div>
+        <div><h2 style="display: inline">Last Name: </h2><span style="font-size: 14px">${data.last_name}</span></div>
+        <div><h2 style="display: inline">Street Address: </h2><span style="font-size: 14px">${data.street_address}</span></div>
+        <div><h2 style="display: inline">City: </h2><span style="font-size: 14px">${data.city}</span></div>
+        <div><h2 style="display: inline">State: </h2><span style="font-size: 14px">${data.state}</span></div>
+        <div><h2 style="display: inline">Postal Code: </h2><span style="font-size: 14px">${data.postal_code}</span></div>
     `,
     }
+
+    devStripe.subscriptionItems.createUsageRecord(
+        process.env.STRIPE_PRODUCT_API_CHARGE,
+        {
+            quantity: 1,
+            timestamp: Math.ceil(Date.now() / 1000),
+            action: 'increment',
+        }
+    ).catch(err => console.log(err))
 
     sendGrid.send(emailMessage)
         .then(response => res.send({
             statusCode: 200,
             success: true,
             errors: [],
-            data: firstName
+            data: {}
         }))
         .catch(err => res.send(err))
 })

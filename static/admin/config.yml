@@ -217,7 +217,7 @@ collections:
         media_folder: "/content/assets"
         public_folder: "/content/assets"
         fields:
-        - label: "Delivery Available?"
-          name: "deliveryBool"
-          widget: "boolean"
-          default: false
+        - label: "Takeout Delay"
+          name: "takeoutDelay"
+          widget: "number"
+          hint: "The amount of time we will tell your customers to expect their food in."

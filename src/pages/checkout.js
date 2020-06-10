@@ -1,20 +1,21 @@
-import React, { useState } from "react"
-// import { useStaticQuery } from "gatsby"
+import React, { useState, useEffect } from "react"
+import { Link } from "gatsby"
+import "../styles/checkout.scss"
+
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import { loadStripe } from '@stripe/stripe-js'
-import "../styles/checkout.scss"
 
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
+import OrderStepper from "../components/orderStepper"
+
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_CLIENT_PUBLISHABLE_KEY)
 
 const style = {
     style: {
         base: {
-            height: "3rem",
             fontFamily: '"Raleway", sans-serif',
             fontSize: "16px",
             color: "#00235B",
-            fontWeight: 900,
             '::placeholder': {
                 fontWeight: 400,
             }
@@ -22,37 +23,35 @@ const style = {
     }
 }
 
-export default ({ ...props }) => {
-    // const data = useStaticQuery(graphql`
-    //     query CheckoutQuery {
-    //         allRestaurantInfoJson(filter: {deliveryBool: {ne: null}}) {
-    //             edges {
-    //               node {
-    //                 deliveryBool
-    //               }
-    //             }
-    //           }
-    //         }
-    // `)
+console.log(Date.now())
 
-    // const deliveryBool = data.allRestaurantInfoJson.edges[0].node.deliveryBool
+export default ({ ...props }) => {
 
     const [order] = useState(typeof localStorage !== "undefined" && JSON.parse(localStorage.getItem("order")))
+    const [orderTotal, setOrderTotal] = useState(0)
+
+    useEffect(() => {
+        let orderTotal = 0
+
+        order.orderItems.forEach(item => {
+            orderTotal = orderTotal + (item.price * item.quantity)
+        })
+
+        setOrderTotal(orderTotal * 100)
+    }, [order.orderItems])
 
     return (
         <div className="checkout-app">
-            <h1>Checkout</h1>
-            {order.orderItems.map((item, index) => {
-                return <p key={index}>{item.menuItem}{item.options.length > 0 && <span>, with options: {item.options.map(option => <span key={option}>{option}</span>)}</span>}, quantity: {item.quantity}</p>
-            })}
-            <StripeWrapper order={order} />
-
+            <OrderStepper activeStep={3} />
+            <Link className="back-to-confirm" to="/order-review">Back to Order Review</Link>
+            <h2>Checkout</h2>
+            <StripeWrapper orderTotal={orderTotal} />
         </div>
     )
 }
 
-const Form = ({ order }) => {
-    const { register, handleSubmit, errors } = useForm()
+const Form = ({ orderTotal }) => {
+    const { register, handleSubmit } = useForm()
     const stripe = useStripe()
     const elements = useElements()
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -69,21 +68,20 @@ const Form = ({ order }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ checkoutAmount: 10 })
+            body: JSON.stringify({ checkoutAmount: orderTotal })
         })
             .then(res => res.json())
             .then(async (res) => {
-                console.log(res)
                 const { error } = await stripe.confirmCardPayment(res.client_secret, {
                     payment_method: {
                         card: elements.getElement(CardNumberElement),
                         billing_details: {
                             address: {
-                                city: formData.City,
+                                city: formData.city,
                                 country: "US",
-                                line1: formData.Street_address,
-                                postal_code: formData.Postal_Code,
-                                state: formData.State
+                                line1: formData.street_address,
+                                postal_code: formData.postal_code,
+                                state: formData.state
                             }
                         }
                     }
@@ -108,101 +106,141 @@ const Form = ({ order }) => {
             })
     }
 
-
-    console.log(errors)
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" placeholder="First name" name="First_name" ref={register({ required: true, maxLength: 80 })} />
-            <input type="text" placeholder="Last name" name="Last_name" ref={register({ required: true, maxLength: 100 })} />
-            <input type="email" placeholder="Email" name="email" ref={register({ required: true, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
-            <input type="text" placeholder="Street Address" name="Street_address" ref={register({ required: true })} />
-            <input type="text" placeholder="City" name="City" ref={register({ required: true })} />
-            <select name="State" ref={register}>
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-                <option value="AR">Arkansas</option>
-                <option value="CA">California</option>
-                <option value="CO">Colorado</option>
-                <option value="CT">Connecticut</option>
-                <option value="DE">Delaware</option>
-                <option value="DC">District of Columbia</option>
-                <option value="FL">Florida</option>
-                <option value="GA">Georgia</option>
-                <option value="HI">Hawaii</option>
-                <option value="ID">Idaho</option>
-                <option value="IL">Illinois</option>
-                <option value="IN">Indiana</option>
-                <option value="IA">Iowa</option>
-                <option value="KS">Kansas</option>
-                <option value="KY">Kentucky</option>
-                <option value="LA">Louisiana</option>
-                <option value="ME">Maine</option>
-                <option value="MD">Maryland</option>
-                <option value="MA">Massachusetts</option>
-                <option value="MI">Michigan</option>
-                <option value="MN">Minnesota</option>
-                <option value="MS">Mississippi</option>
-                <option value="MO">Missouri</option>
-                <option value="MT">Montana</option>
-                <option value="NE">Nebraska</option>
-                <option value="NV">Nevada</option>
-                <option value="NH">New Hampshire</option>
-                <option value="NJ">New Jersey</option>
-                <option value="NM">New Mexico</option>
-                <option value="NY">New York</option>
-                <option value="NC">North Carolina</option>
-                <option value="ND">North Dakota</option>
-                <option value="OH">Ohio</option>
-                <option value="OK">Oklahoma</option>
-                <option value="OR">Oregon</option>
-                <option value="PA">Pennsylvania</option>
-                <option value="PR">Puerto Rico</option>
-                <option value="RI">Rhode Island</option>
-                <option value="SC">South Carolina</option>
-                <option value="SD">South Dakota</option>
-                <option value="TN">Tennessee</option>
-                <option value="TX">Texas</option>
-                <option value="UT">Utah</option>
-                <option value="VT">Vermont</option>
-                <option value="VA">Virginia</option>
-                <option value="WA">Washington</option>
-                <option value="WV">West Virginia</option>
-                <option value="WI">Wisconsin</option>
-                <option value="WY">Wyoming</option>
-            </select>
-            <input type="number" placeholder="Postal Code" name="Postal_Code" ref={register({ required: true })} />
-            <input type="tel" placeholder="Mobile Number" name="Mobile_Number" ref={register({ required: true, minLength: 6, maxLength: 12 })} />
-            <label htmlFor="cardnumber">
-                Card Number
+            <div className="section">
+                <h3>Your Information</h3>
+                <div className="row">
+                    <span className="input-container">
+                        <label htmlFor="first_name">First Name</label>
+                        <input type="text" placeholder="First Name" name="first_name" ref={register({ required: true, maxLength: 80 })} />
+                    </span>
+                    <span className="input-container">
+                        <label htmlFor="last_name">Last Name</label>
+                        <input type="text" placeholder="Last Name" name="last_name" ref={register({ required: true, maxLength: 100 })} />
+                    </span>
+                </div>
+                <div className="row full-width">
+                    <span className="input-container">
+                        <label htmlFor="email">Email</label>
+                        <input type="email" placeholder="Email" name="email" ref={register({ required: true, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
+                    </span>
+                    <span className="input-container">
+                        <label htmlFor="mobile_number">Mobile Number</label>
+                        <input type="tel" placeholder="Mobile Number" name="mobile_number" ref={register({ required: true, minLength: 6, maxLength: 12 })} />
+                    </span>
+                </div>
+            </div>
+            <div className="section">
+                <h3>Billing Info</h3>
+                <div className="row">
+                    <span className="input-container full-width">
+                        <label htmlFor="street_address">Street Address</label>
+                        <input className="full-width-input" type="text" placeholder="Street Address" name="street_address" ref={register({ required: true })} />
+                    </span>
+                </div>
+                <div className="row">
+                    <span className="input-container city">
+                        <label htmlFor="city">City</label>
+                        <input type="text" placeholder="City" name="city" ref={register({ required: true })} />
+                    </span>
+                    <span className="input-container select">
+                        <label htmlFor="state">State</label>
+                        <select name="state" ref={register}>
+                            <option value="">State</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                    </span>
+                    <span className="input-container postal">
+                        <label htmlFor="postal_code">Postal Code</label>
+                        <input type="number" placeholder="Postal Code" name="postal_code" ref={register({ required: true })} />
+                    </span>
+                </div>
+                <label className="stripe-label" htmlFor="cardnumber">
+                    Card Number
+                    </label>
                 <CardNumberElement
-                    className="form-input"
+                    className="stripe-form-input"
                     options={style}
                 />
-            </label>
-            <label htmlFor="exp-date">
-                Expiration Date
-            <CardExpiryElement
-                    className="form-input"
-                    options={style}
-                />
-            </label>
-            <label htmlFor="cvc">
-                Security Code (CVC)
-                <CardCvcElement
-                    className="form-input"
-                    options={style}
-                />
-            </label>
-            {stripeError.bool && <p className="error">{stripeError.message}</p>}
-            <button type="submit">{isSubmitting ? "Processing..." : "Submit"}</button>
+                <div className="row">
+                    <label className="stripe-label small" htmlFor="exp-date">
+                        Expiration Date
+                    <CardExpiryElement
+                            className="stripe-form-input expiry"
+                            options={style}
+                        />
+                    </label>
+                    <label className="stripe-label small" htmlFor="cvc">
+                        Security Code
+                    <CardCvcElement
+                            className="stripe-form-input cvc"
+                            options={style}
+                        />
+                    </label>
+                </div>
+                {stripeError.message ? <p className="stripe-error">{stripeError.message}</p> : <p className="stripe-error-placeholder"></p>}
+            </div>
+            <div className="submit-container">
+                <button className="submit" type="submit" disabled={orderTotal === 0 || !stripe || !elements}>{isSubmitting ? "Processing..." : `Pay $${orderTotal.toFixed(2) / 100}`}</button>
+            </div>
         </form>
     )
 }
 
-const StripeWrapper = ({ order }) => (
+const StripeWrapper = ({ order, orderTotal }) => (
     <Elements stripe={stripePromise} options={{ fonts: [{ cssSrc: "https://fonts.googleapis.com/css?family=Raleway&display=swap" }] }}>
-        <Form order={order} />
+        <Form order={order} orderTotal={orderTotal} />
     </Elements >
 )
