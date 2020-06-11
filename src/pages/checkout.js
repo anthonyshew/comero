@@ -23,8 +23,6 @@ const style = {
     }
 }
 
-console.log(Date.now())
-
 export default ({ ...props }) => {
 
     const [order] = useState(typeof localStorage !== "undefined" && JSON.parse(localStorage.getItem("order")))
@@ -233,7 +231,7 @@ const Form = ({ orderTotal }) => {
                 {stripeError.message ? <p className="stripe-error">{stripeError.message}</p> : <p className="stripe-error-placeholder"></p>}
             </div>
             <div className="submit-container">
-                <button className="submit" type="submit" disabled={orderTotal === 0 || !stripe || !elements}>{isSubmitting ? "Processing..." : `Pay $${orderTotal.toFixed(2) / 100}`}</button>
+                <button className="submit" type="submit" disabled={orderTotal === 0 || !stripe || !elements}>{isSubmitting ? "Processing..." : `Pay $${(orderTotal / 100).toFixed(2)}`}</button>
             </div>
         </form>
     )

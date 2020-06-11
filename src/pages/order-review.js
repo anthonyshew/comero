@@ -40,13 +40,9 @@ export default ({ ...props }) => {
     }, [orderToConfirm])
 
     const remove = (id) => {
-        console.log(orderToConfirm.orderItems.filter(elem => {
-            return elem.id !== id
-        }))
         setOrderToConfirm({
             orderItems: orderToConfirm.orderItems.filter(elem => elem.id !== id)
         })
-
     }
 
     const addQuantity = (id, quantity) => {

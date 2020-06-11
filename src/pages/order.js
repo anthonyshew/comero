@@ -128,7 +128,6 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
     }, [selectedOptions, basePrice, modalData.orderOptions, quantity])
 
     const addToOrder = data => {
-        console.log(data)
         const userSelections = Object.entries(data)
         //Remove quantity from a list of menu item options
         userSelections.pop()
