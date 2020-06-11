@@ -9,36 +9,35 @@ import { Accordion, AccordionItem } from "./accordion"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
-    query layoutQuery {
-      companyLogo: file(absolutePath: {regex: "/logo.jpg/"}) {
+  query LayouTQuery {
+    allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
+      nodes {
+        name
         childImageSharp {
           fixed(width: 300, height: 300) {
             ...GatsbyImageSharpFixed
           }
-        }
-      }
-      hero: file(absolutePath: {regex: "/hero.jpg/"}) {
-        childImageSharp {
           fluid(maxWidth: 1500) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      restaurantInfoJson {
-        restaurantMotto
-        restaurantName
-        restaurantAbout
-        address {
-          state
-        }
-      }
-      site {
-        siteMetadata {
-          title
-          siteUrl
-        }
+    }
+    restaurantInfoJson {
+      restaurantMotto
+      restaurantName
+      restaurantAbout
+      address {
+        state
       }
     }
+    site {
+      siteMetadata {
+        title
+        siteUrl
+      }
+    }
+  }
   `)
 
   const { restaurantMotto, restaurantName } = data.restaurantInfoJson
@@ -49,9 +48,9 @@ const Layout = ({ children }) => {
     <>
       <Navbar data={data} scrollTopFocus="scrollTopFocus" />
       <div className="hero-container">
-        <Image className="hero-image" fluid={data.hero.childImageSharp.fluid} alt={`${data.restaurantInfoJson.restaurantName}'s Restaurant & Food.`} />
+        <Image className="hero-image" fluid={data.allFile.nodes.filter(node => node.name === "hero")[0].childImageSharp.fluid} alt={`${data.restaurantInfoJson.restaurantName}'s Restaurant & Food.`} />
         <div className="flex-container">
-          <Image className="header-logo" fixed={data.companyLogo.childImageSharp.fixed} alt="Restaurant logo." />
+          <Image className="header-logo" fixed={data.allFile.nodes.filter(node => node.name === "logo")[0].childImageSharp.fixed} alt="Restaurant logo." />
           <div className="text-content">
             <h1>{restaurantName}</h1>
             <h2>{restaurantMotto}</h2>

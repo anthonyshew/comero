@@ -86,14 +86,12 @@ collections:
         - label: "Restaurant Name"
           name: "restaurantName"
           widget: "string"
-        - label: "Restaurant Logo (MUST BE NAMED 'LOGO . JPG')"
+        - label: "Restaurant Logo"
           name: "logo"
           widget: "image"
-          pattern: ["logo.jpg", "Your image file must be named 'hero . jpg'. Rename it or convert to a JPG file if needed"]
-        - label: "Cover Image (MUST BE NAMED 'HERO . JPG')"
+        - label: "Cover Image"
           name: "hero"
           widget: "image"
-          pattern: ["hero.jpg", "Your image file must be named 'logo . jpg'. Rename it or convert to a JPG file if needed"]
         - label: "Restaurant Tagline/Motto"
           name: "restaurantMotto"
           widget: "string"
@@ -214,8 +212,6 @@ collections:
       - label: "Online Ordering Settings"
         name: "orderingSettings"
         file: "content/restaurantInfo/orderingSettings.json"
-        media_folder: "/content/assets"
-        public_folder: "/content/assets"
         fields:
         - label: "Takeout Delay"
           name: "takeoutDelay"
