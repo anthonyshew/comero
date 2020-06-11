@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 import "../styles/thank-you.scss"
 
 export default ({ location }) => {
-  const { orderSettings, logo, restaurantInfoJson, companyLogo } = useStaticQuery(graphql`
+  const { orderSettings, logo, restaurantInfoJson } = useStaticQuery(graphql`
     query ThankYouQuery{
     orderSettings: allFile(filter: {sourceInstanceName: {eq: "orderSettings"}}) {
         edges {
@@ -14,15 +14,6 @@ export default ({ location }) => {
             }
           }
         }
-      }
-      restaurantInfoJson {
-          restaurantName
-          address {
-            city
-            state
-            streetAddress
-            zipCode
-          }
       }
       logo: allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
         nodes {
@@ -37,6 +28,15 @@ export default ({ location }) => {
           }
         }
       }
+      restaurantInfoJson {
+        restaurantName
+        address {
+          city
+          state
+          streetAddress
+          zipCode
+        }
+    }
     }
     `)
 

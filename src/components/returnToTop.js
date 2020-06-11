@@ -1,11 +1,19 @@
-import React, { useRef } from 'react'
-import { useScrollPosition } from "../hooks/useScrollPosition"
+import React, { useState, useEffect, useRef } from 'react'
 
 import Arrow from "../svg/arrow-right.svg"
 
 const ReturnToTop = () => {
+    const [scrollPosition, setScrollPosition] = useState({ x: 0, y: 0 })
+
+    useEffect(() => {
+        const onScroll = () => setScrollPosition({ x: window.pageXOffset, y: window.pageYOffset })
+        window.addEventListener("scroll", onScroll)
+
+        return () => window.removeEventListener("scroll", onScroll)
+    }, [])
+
+
     const element = useRef(null)
-    const scroll = useScrollPosition()
 
     const buttonStyles = {
         appearance: "none",
@@ -42,7 +50,7 @@ const ReturnToTop = () => {
         return (
             <button
                 style={
-                    scroll.y > 0 ? {
+                    scrollPosition.y > 0 ? {
                         ...buttonStyles,
                         transition: ".5s",
                         width: "50px",
@@ -62,7 +70,7 @@ const ReturnToTop = () => {
                 tabIndex={0}
                 ref={element}
             >
-                <Arrow style={scroll.y > 0 ? {
+                <Arrow style={scrollPosition.y > 0 ? {
                     ...arrowStyles,
                     height: "20px",
                     width: "20px",
