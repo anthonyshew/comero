@@ -23,7 +23,7 @@ export default ({ activeStep }) => {
 
     return (
         <div className="order-stepper-container">
-            <h1>{restaurantInfoJson.restaurantName}</h1>
+            <h1>{restaurantInfoJson.restaurantName} Takeout App</h1>
             <div className="steps-container">
                 <div className={`step one${activeStep === 1 ? " active" : ""}`}>
                     Food

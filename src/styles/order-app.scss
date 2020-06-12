@@ -172,6 +172,14 @@
             text-align: center;
             line-height: 52px;
             font-size: 32px;
+            -moz-appearance: textfield;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
             font-family: $raleway;
         }
 
@@ -207,6 +215,7 @@
             display: block;
             width: 95%;
             margin: 0 auto;
+            margin-bottom: 1rem;
             padding: .4rem .6rem;
             border: 2px solid $primary-color;
             border-radius: .5rem;

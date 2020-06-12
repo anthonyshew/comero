@@ -66,7 +66,7 @@ export default ({ ...props }) => {
     return (
         <div className="order-app">
             <OrderStepper activeStep={1} />
-            <h2>Pick out your food!</h2>
+            <h2>Our Takeout Menu</h2>
             <Accordion>
                 <Menu setModalData={setModalData} menuSections={menuSections} />
             </Accordion>

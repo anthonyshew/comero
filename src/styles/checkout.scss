@@ -77,6 +77,13 @@
             font-family: $raleway;
             background-color: $white;
             font-size: 18px;
+            -moz-appearance: textfield;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
         }
 
         .full-width-input {
