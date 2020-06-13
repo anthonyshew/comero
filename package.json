@@ -12,7 +12,7 @@
     "start:cms": "npx netlify-cms-proxy-server",
     "start:app": "gatsby develop -p 3000",
     "start:lambda": "netlify-lambda serve src/.netlify/functions",
-    "build": "gatsby build && netlify-lambda build src/.netlify/functions",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages && netlify-lambda build src/.netlify/functions",
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/.netlify/functions",
     "serve": "gatsby serve -p 3000",
