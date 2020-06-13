@@ -78,11 +78,17 @@
             background-color: $white;
             font-size: 18px;
             -moz-appearance: textfield;
+            transition: .2s;
 
             &::-webkit-outer-spin-button,
             &::-webkit-inner-spin-button {
                 -webkit-appearance: none;
                 margin: 0;
+            }
+
+            &.invalid {
+                border-left: 10px solid #ff0000;
+                border-right: 10px solid #ff0000;
             }
         }
 
@@ -123,6 +129,7 @@
         background-color: white;
         border: 2px solid $gray;
         border-radius: .5rem;
+        transition: .2s;
 
         &.expiry {
             width: 10%;
@@ -134,6 +141,11 @@
             width: 10%;
             min-width: 60px;
             margin: 0 auto;
+        }
+
+        &.StripeElement--invalid {
+            border-left: 10px solid #ff0000;
+            border-right: 10px solid #ff0000;
         }
     }
 
@@ -176,9 +188,20 @@
             font-family: $passion;
             font-size: 36px;
             cursor: pointer;
+            transition: .2s;
 
             &:disabled {
                 background-color: $gray;
+            }
+        }
+    }
+}
+
+@media (hover:hover) {
+    .checkout-app {
+        .submit-container {
+            .submit:hover {
+                background-color: $tertiary-color;
             }
         }
     }

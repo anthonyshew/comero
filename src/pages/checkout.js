@@ -49,7 +49,7 @@ export default ({ ...props }) => {
 }
 
 const Form = ({ orderTotal }) => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, errors } = useForm()
     const stripe = useStripe()
     const elements = useElements()
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -104,6 +104,8 @@ const Form = ({ orderTotal }) => {
             })
     }
 
+    console.log(errors)
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="section">
@@ -111,21 +113,21 @@ const Form = ({ orderTotal }) => {
                 <div className="row">
                     <span className="input-container">
                         <label htmlFor="first_name">First Name</label>
-                        <input type="text" placeholder="First Name" aria-label="First Name" name="first_name" ref={register({ required: true, maxLength: 80 })} />
+                        <input className={errors.first_name && "invalid"} type="text" placeholder="First Name" aria-label="First Name" name="first_name" ref={register({ required: true, minLength: 1, maxLength: 50 })} />
                     </span>
                     <span className="input-container">
                         <label htmlFor="last_name">Last Name</label>
-                        <input type="text" placeholder="Last Name" aria-label="Last Name" name="last_name" ref={register({ required: true, maxLength: 100 })} />
+                        <input type="text" className={errors.last_name && "invalid"} placeholder="Last Name" aria-label="Last Name" name="last_name" ref={register({ required: true, minLength: 1, maxLength: 50 })} />
                     </span>
                 </div>
                 <div className="row full-width">
                     <span className="input-container">
                         <label htmlFor="email">Email</label>
-                        <input type="email" placeholder="Email" aria-label="Email" name="email" ref={register({ required: true, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
+                        <input type="email" className={errors.email && "invalid"} placeholder="Email" aria-label="Email" name="email" ref={register({ required: true, minLength: 1, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
                     </span>
                     <span className="input-container">
                         <label htmlFor="mobile_number">Mobile Number</label>
-                        <input type="tel" placeholder="Mobile Number" aria-label="Mobile Number" name="mobile_number" ref={register({ required: true, minLength: 6, maxLength: 12 })} />
+                        <input type="tel" className={errors.mobile_number && "invalid"} placeholder="Mobile Number" aria-label="Mobile Number" name="mobile_number" ref={register({ required: true, minLength: 10, maxLength: 10 })} />
                     </span>
                 </div>
             </div>
@@ -134,17 +136,17 @@ const Form = ({ orderTotal }) => {
                 <div className="row">
                     <span className="input-container full-width">
                         <label htmlFor="street_address">Street Address</label>
-                        <input className="full-width-input" type="text" placeholder="Street Address" aria-label="Street Address" name="street_address" ref={register({ required: true })} />
+                        <input className={`"full-width-input"${errors.street_address && " invalid"}`} type="text" placeholder="Street Address" aria-label="Street Address" name="street_address" ref={register({ required: true, minLength: 1 })} />
                     </span>
                 </div>
                 <div className="row">
                     <span className="input-container city">
                         <label htmlFor="city">City</label>
-                        <input type="text" placeholder="City" aria-label="City" name="city" ref={register({ required: true })} />
+                        <input type="text" className={errors.city && "invalid"} placeholder="City" aria-label="City" name="city" ref={register({ required: true, minLength: 1 })} />
                     </span>
                     <span className="input-container select">
                         <label htmlFor="state">State</label>
-                        <select name="state" ref={register}>
+                        <select className={errors.state && "invalid"} name="state" ref={register({ required: true, minLength: 1, maxLength: 2 })}>
                             <option value="">State</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -202,7 +204,7 @@ const Form = ({ orderTotal }) => {
                     </span>
                     <span className="input-container postal">
                         <label htmlFor="postal_code">Postal Code</label>
-                        <input type="number" placeholder="Postal Code" aria-label="Postal Code" name="postal_code" ref={register({ required: true })} />
+                        <input type="number" className={errors.postal_code && "invalid"} placeholder="Postal Code" aria-label="Postal Code" name="postal_code" ref={register({ required: true })} />
                     </span>
                 </div>
                 <label className="stripe-label" htmlFor="cardnumber">

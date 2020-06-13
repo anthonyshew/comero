@@ -183,7 +183,7 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
                         <button className="quantity-button" type="button" onClick={() => setQuantity(quantity + 1)}><span>+</span></button>
                     </div>
                     <label className="chef-note-label" htmlFor="chef_note">Notes to Chef</label>
-                    <input className="chef-note" type="text" aria-label="Chef Note" name="chef_note" ref={register} />
+                    <input className="chef-note" type="text" aria-label="Chef Note" placeholder="(Optional)" name="chef_note" ref={register} />
                 </section>
                 <input type="submit" className="add-to-order-button" aria-label={"Add to Order - $" + currentPrice.toFixed(2)} value={"Add to Order - $" + currentPrice.toFixed(2)} />
             </form>

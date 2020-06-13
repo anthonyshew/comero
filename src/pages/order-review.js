@@ -97,8 +97,8 @@ export default ({ ...props }) => {
                                 <button className="quantity-button down" onClick={() => subtractQuantity(item.id, item.quantity)}>One Less...</button>
                                 <button className="quantity-button up" onClick={() => addQuantity(item.id, item.quantity)}>One More!</button>
                             </div>
-                            {item.chefNote.length > 0 && <p className="chef-note">Note to Chef: {item.chefNote}</p>}
                         </div>
+                        {item.chefNote.length > 0 && <p className="chef-note">Note to Chef: {item.chefNote}</p>}
                     </div>
                 ))}
             </div>
