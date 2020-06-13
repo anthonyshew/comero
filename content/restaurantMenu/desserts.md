@@ -6,7 +6,7 @@ menuSectionList:
     menuItemPrice: 8.99
     menuItemDescription: Ever heard of smoked Lava Cake? Today's the day that you
       do. Our Lava Cake features homemade chocolate cake, chocolate bar
-      shavings, and fudge on top.
+      shavings, and fudge on top. It's the best.
     favorite: true
   - menuItem: Frozen Lemonade
     menuItemPrice: 5.99
