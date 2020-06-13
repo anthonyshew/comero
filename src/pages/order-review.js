@@ -82,7 +82,7 @@ export default ({ ...props }) => {
                 <h2>Total: ${orderTotal.toFixed(2)}</h2>
                 {orderToConfirm.orderItems.length === 0 ? <EmptyOrder /> : orderToConfirm.orderItems.map((item, index) => (
                     <div key={index} id={item.id} className="order-item" style={item.image ? { backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${item.image})` } : {}}>
-                        <button className="remove" onClick={() => remove(item.id)}><TrashCan /></button>
+                        <button className="remove" aria-label="Remove From Order" onClick={() => remove(item.id)}><TrashCan /></button>
                         <h3>{item.menuItem}</h3>
                         {item.options.length > 0 && <div className="options"> Add: {item.options.map((option, index) => {
                             if (index + 1 === item.options.length) {

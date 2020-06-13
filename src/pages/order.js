@@ -167,11 +167,11 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
                 <section className="inner-body">
                     {modalData.menuItemImage && <img className="modal-image" src={modalData.menuItemImage} alt={modalData.menuItem} />}
                     <p className="modal-description">{modalData.menuItemDescription}</p>
-                    <button className="modal-exit" onClick={() => setModalData({})}><X /></button>
+                    <button className="modal-exit" aria-label="Close menu item pop up" onClick={() => setModalData({})}><X /></button>
                     {modalData.orderOptions && <h3>Options</h3>}
                     {modalData.orderOptions && modalData.orderOptions.map((option) => (
                         <div key={option.orderOptionName} className="checkbox-container">
-                            <input className="checkbox" type="checkbox" name={option.orderOptionName} ref={register} />
+                            <input className="checkbox" type="checkbox" aria-label={option.orderOptionName} name={option.orderOptionName} ref={register} />
                             <label className="checkbox-label" htmlFor={option.orderOptionName}>
                                 {option.orderOptionName} {option.orderOptionPriceChange > 0 && <>(+ ${option.orderOptionPriceChange.toFixed(2)})</>}</label>
                         </div>
@@ -179,13 +179,13 @@ const ItemModal = ({ modalData, setModalData, setOrder }) => {
                     <label htmlFor="quantity" className="quantity-label">Quantity</label>
                     <div className="quantity-flex">
                         <button className="quantity-button" type="button" onClick={() => setQuantity(quantity >= 2 ? quantity - 1 : 1)}><span className="minus-fix">-</span></button>
-                        <input className="quantity-input" type="number" min="1" name="quantity" value={quantity} readOnly={true} ref={register} />
+                        <input className="quantity-input" type="number" aria-label="Quantity" name="quantity" value={quantity} readOnly={true} ref={register} />
                         <button className="quantity-button" type="button" onClick={() => setQuantity(quantity + 1)}><span>+</span></button>
                     </div>
                     <label className="chef-note-label" htmlFor="chef_note">Notes to Chef</label>
-                    <input className="chef-note" type="text" name="chef_note" ref={register} />
+                    <input className="chef-note" type="text" aria-label="Chef Note" name="chef_note" ref={register} />
                 </section>
-                <input type="submit" className="add-to-order-button" value={"Add to Order - $" + currentPrice.toFixed(2)} />
+                <input type="submit" className="add-to-order-button" aria-label={"Add to Order - $" + currentPrice.toFixed(2)} value={"Add to Order - $" + currentPrice.toFixed(2)} />
             </form>
         </div>
     )

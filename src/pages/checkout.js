@@ -111,21 +111,21 @@ const Form = ({ orderTotal }) => {
                 <div className="row">
                     <span className="input-container">
                         <label htmlFor="first_name">First Name</label>
-                        <input type="text" placeholder="First Name" name="first_name" ref={register({ required: true, maxLength: 80 })} />
+                        <input type="text" placeholder="First Name" aria-label="First Name" name="first_name" ref={register({ required: true, maxLength: 80 })} />
                     </span>
                     <span className="input-container">
                         <label htmlFor="last_name">Last Name</label>
-                        <input type="text" placeholder="Last Name" name="last_name" ref={register({ required: true, maxLength: 100 })} />
+                        <input type="text" placeholder="Last Name" aria-label="Last Name" name="last_name" ref={register({ required: true, maxLength: 100 })} />
                     </span>
                 </div>
                 <div className="row full-width">
                     <span className="input-container">
                         <label htmlFor="email">Email</label>
-                        <input type="email" placeholder="Email" name="email" ref={register({ required: true, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
+                        <input type="email" placeholder="Email" aria-label="Email" name="email" ref={register({ required: true, pattern: /^.+@[^].*\.[a-z]{2,}$/ })} />
                     </span>
                     <span className="input-container">
                         <label htmlFor="mobile_number">Mobile Number</label>
-                        <input type="tel" placeholder="Mobile Number" name="mobile_number" ref={register({ required: true, minLength: 6, maxLength: 12 })} />
+                        <input type="tel" placeholder="Mobile Number" aria-label="Mobile Number" name="mobile_number" ref={register({ required: true, minLength: 6, maxLength: 12 })} />
                     </span>
                 </div>
             </div>
@@ -134,13 +134,13 @@ const Form = ({ orderTotal }) => {
                 <div className="row">
                     <span className="input-container full-width">
                         <label htmlFor="street_address">Street Address</label>
-                        <input className="full-width-input" type="text" placeholder="Street Address" name="street_address" ref={register({ required: true })} />
+                        <input className="full-width-input" type="text" placeholder="Street Address" aria-label="Street Address" name="street_address" ref={register({ required: true })} />
                     </span>
                 </div>
                 <div className="row">
                     <span className="input-container city">
                         <label htmlFor="city">City</label>
-                        <input type="text" placeholder="City" name="city" ref={register({ required: true })} />
+                        <input type="text" placeholder="City" aria-label="City" name="city" ref={register({ required: true })} />
                     </span>
                     <span className="input-container select">
                         <label htmlFor="state">State</label>
@@ -202,7 +202,7 @@ const Form = ({ orderTotal }) => {
                     </span>
                     <span className="input-container postal">
                         <label htmlFor="postal_code">Postal Code</label>
-                        <input type="number" placeholder="Postal Code" name="postal_code" ref={register({ required: true })} />
+                        <input type="number" placeholder="Postal Code" aria-label="Postal Code" name="postal_code" ref={register({ required: true })} />
                     </span>
                 </div>
                 <label className="stripe-label" htmlFor="cardnumber">
