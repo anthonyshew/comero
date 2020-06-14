@@ -70,7 +70,7 @@ const Layout = ({ children }) => {
       <ReturnToTop />
       <Navbar data={data} orderBoolean={orderBoolean} />
       <TermsOfUse data={data} />
-      <span className="attribution">This website was created by <a href="https://shewperman.dev" target="_blank" rel="noopener noreferrer">Shewperman Web & Software Development</a> using <a href="https://comero.netlify.app" target="_blank" rel="noopener noreferrer">the Comero platform</a>.</span>
+      <span className="attribution">This website was created by <a href="https://inthezone.dev" target="_blank" rel="noopener noreferrer">In the Zone Development</a> using <a href="https://comero.netlify.app" target="_blank" rel="noopener noreferrer">the Comero platform</a>.</span>
     </>
   )
 
