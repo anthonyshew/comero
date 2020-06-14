@@ -1,7 +1,6 @@
 import React from "react"
 import '../styles/reset.scss'
 import '../styles/global.scss'
-import Image from "gatsby-image"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import ReturnToTop from "./returnToTop"
@@ -24,6 +23,8 @@ const Layout = ({ children }) => {
       }
     }
     restaurantInfoJson {
+      hero
+      logo
       restaurantMotto
       restaurantName
       restaurantAbout
@@ -54,9 +55,9 @@ const Layout = ({ children }) => {
     <>
       <Navbar data={data} scrollTopFocus="scrollTopFocus" orderBoolean={orderBoolean} />
       <div className="hero-container">
-        <Image className="hero-image" fluid={data.allFile.nodes.filter(node => node.name === "hero")[0].childImageSharp.fluid} alt={`${data.restaurantInfoJson.restaurantName}'s Restaurant & Food.`} />
+        <img className="hero-image" src={data.restaurantInfoJson.hero.split("/static/")[1]} alt={`${data.restaurantInfoJson.restaurantName}'s Restaurant & Food.`} />
         <div className="flex-container">
-          <Image className="header-logo" fixed={data.allFile.nodes.filter(node => node.name === "logo")[0].childImageSharp.fixed} alt="Restaurant logo." />
+          <img className="header-logo" src={data.restaurantInfoJson.logo.split("/static/")[1]} alt="Restaurant logo." />
           <div className="text-content">
             <h1>{restaurantName}</h1>
             <h2>{restaurantMotto}</h2>

@@ -13,16 +13,8 @@ import { Accordion, AccordionItem } from "../components/accordion"
 const Index = ({ location }) => {
   const data = useStaticQuery(graphql`
   query IndexQuery {
-    allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
-      nodes {
-        childImageSharp {
-          fixed(width: 300, height: 300) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
     restaurantInfoJson {
+      logo
       restaurantName
       restaurantMotto
       restaurantAbout
@@ -99,11 +91,7 @@ const Index = ({ location }) => {
     <Layout location={location}>
       <SEO
         title="Home"
-      >
-        <meta name="og:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
-        <meta name="twitter:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
-        <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Home Page`} />
-      </SEO>
+      />
       <section id="store" className="store-container">
         <Hours hoursByDay={[mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours]} />
         <div className="location">

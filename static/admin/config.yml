@@ -80,8 +80,8 @@ collections:
       - label: "Restaurant Basic Info"
         name: "restaurantInfo"
         file: "content/restaurantInfo/restaurantBasicInfo.json"
-        media_folder: "/content/assets"
-        public_folder: "/content/assets"
+        media_folder: "/static/assets"
+        public_folder: "/static/assets"
         fields:
         - label: "Restaurant Name"
           name: "restaurantName"

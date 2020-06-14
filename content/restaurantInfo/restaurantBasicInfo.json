@@ -4,7 +4,7 @@
     "close": "9 PM"
   },
   "restaurantName": "House Divided Brewery",
-  "logo": "/content/assets/housedividedlogo.webp",
+  "logo": "/static/assets/housedividedlogo.webp",
   "phone": "(319) 848-4197",
   "fridayHours": {
     "open": "10:30 AM",
@@ -30,7 +30,7 @@
     "open": "10:30 AM",
     "close": "9 PM"
   },
-  "hero": "/content/assets/83696118_551176452137074_8774841008631316480_o.jpg",
+  "hero": "/static/assets/83696118_551176452137074_8774841008631316480_o.jpg",
   "email": "elybrew@gmail.com",
   "sundayHours": {
     "open": "10:30 AM",

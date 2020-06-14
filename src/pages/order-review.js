@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby"
 import "../styles/order-review.scss"
 
 import SEO from "../components/seo"
@@ -7,22 +7,6 @@ import OrderStepper from "../components/orderStepper"
 import TrashCan from "../svg/trash-can.svg"
 
 export default ({ ...props }) => {
-    const data = useStaticQuery(graphql`
-    query OrderReviewQuery {
-      allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
-        nodes {
-          childImageSharp {
-            fixed(width: 300, height: 300) {
-              ...GatsbyImageSharpFixed
-            }
-          }
-        }
-      }
-      restaurantInfoJson {
-        restaurantName
-      }
-    }
-    `)
 
     const [initialRender, setInitialRender] = useState(true)
     const [orderToConfirm, setOrderToConfirm] = useState(typeof localStorage !== "undefined" ? JSON.parse(localStorage.getItem("order")) : { orderItems: [] })
@@ -94,11 +78,7 @@ export default ({ ...props }) => {
         <>
             <SEO
                 title="Order Review"
-            >
-                <meta name="og:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
-                <meta name="twitter:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
-                <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Order Review Page`} />
-            </SEO>
+            />
             <div className="order-app-review">
                 <OrderStepper activeStep={2} />
                 <div className="review-container">

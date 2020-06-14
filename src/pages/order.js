@@ -15,15 +15,7 @@ import X from "../svg/x.svg"
 export default ({ ...props }) => {
     const data = useStaticQuery(graphql`
     query AppQuery {
-        allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
-            nodes {
-              childImageSharp {
-                fixed(width: 300, height: 300) {
-                  ...GatsbyImageSharpFixed
-                }
-              }
-            }
-          }
+
         allMarkdownRemark {
             nodes {
               frontmatter {
@@ -82,11 +74,8 @@ export default ({ ...props }) => {
         <>
             <SEO
                 title="Order Menu"
-            >
-                <meta name="og:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
-                <meta name="twitter:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
-                <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Order Menu Page`} />
-            </SEO>
+            />
+
             <div className="order-app">
                 <OrderStepper activeStep={1} />
                 <h2>Our Takeout Menu</h2>
