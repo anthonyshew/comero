@@ -54,8 +54,7 @@ const Layout = ({ children }) => {
   header = (
     <>
       <Navbar data={data} scrollTopFocus="scrollTopFocus" orderBoolean={orderBoolean} />
-      <div className="hero-container">
-        <img className="hero-image" src={data.restaurantInfoJson.hero.split("/static/")[1]} alt={`${data.restaurantInfoJson.restaurantName}'s Restaurant & Food.`} />
+      <div className="hero-container" style={{ backgroundImage: `url(${data.restaurantInfoJson.hero.split("/static/")[1]})` }}>
         <div className="flex-container">
           <img className="header-logo" src={data.restaurantInfoJson.logo.split("/static/")[1]} alt="Restaurant logo." />
           <div className="text-content">

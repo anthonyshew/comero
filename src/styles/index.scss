@@ -32,6 +32,9 @@
     max-height: 90vh;
     color: $secondary-color;
     background-color: $tertiary-color;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
 
     h1 {
         font-family: $raleway;
@@ -62,6 +65,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
+        backdrop-filter: brightness(65%);
     }
 
     .header-logo {
