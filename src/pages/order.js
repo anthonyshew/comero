@@ -101,7 +101,7 @@ const Menu = ({ menuSections, setModalData }) => {
                 <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
                     {frontmatter.menuSectionList.map((item) => (
                         <button key={item.menuItem} className="menu-item" onClick={() => openMenuItem(item)}>
-                            <h4>{item.favorite && <Star />} {item.menuItem}: ${String(item.menuItemPrice.toFixed(2))}</h4>
+                            <h4>{item.favorite && <Star />} {item.menuItem}: ${parseFloat(item.menuItemPrice.toFixed(2))}</h4>
                             <div className="menu-item-body">
                                 <p className="menu-item-description">{item.menuItemDescription}</p>
                             </div>
