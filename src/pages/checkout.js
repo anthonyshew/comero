@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import "../styles/checkout.scss"
 
 import { Elements, CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useForm } from 'react-hook-form'
 import { loadStripe } from '@stripe/stripe-js'
 
+import SEO from "../components/seo"
 import OrderStepper from "../components/orderStepper"
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_CLIENT_PUBLISHABLE_KEY)
@@ -24,6 +25,19 @@ const style = {
 }
 
 export default ({ ...props }) => {
+    const data = useStaticQuery(graphql`
+    query CheckoutQuery {
+      allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
+        nodes {
+          childImageSharp {
+            fixed(width: 300, height: 300) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+      }
+    }
+    `)
 
     const [order] = useState(typeof localStorage !== "undefined" && JSON.parse(localStorage.getItem("order")))
     const [orderTotal, setOrderTotal] = useState(0)
@@ -39,12 +53,21 @@ export default ({ ...props }) => {
     }, [order.orderItems])
 
     return (
-        <div className="checkout-app">
-            <OrderStepper activeStep={3} />
-            <Link className="back-to-confirm" to="/order-review">Back to Order Review</Link>
-            <h2>Checkout</h2>
-            <StripeWrapper orderTotal={orderTotal} />
-        </div>
+        <>
+            <SEO
+                title="Checkout"
+            >
+                <meta name="og:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
+                <meta name="twitter:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
+                <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Checkout Page`} />
+            </SEO>
+            <div className="checkout-app">
+                <OrderStepper activeStep={3} />
+                <Link className="back-to-confirm" to="/order-review">Back to Order Review</Link>
+                <h2>Checkout</h2>
+                <StripeWrapper orderTotal={orderTotal} />
+            </div>
+        </>
     )
 }
 

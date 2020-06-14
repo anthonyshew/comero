@@ -4,8 +4,9 @@ import { useForm } from "react-hook-form"
 import '../styles/order-app.scss'
 
 import { checkArrayEquality } from "../utils/checkArrayEquality"
-
 import { useBodyScrollLock } from "../hooks/useBodyScrollLock"
+
+import SEO from "../components/seo"
 import { Accordion, AccordionItem } from "../components/accordion"
 import OrderStepper from "../components/orderStepper"
 import Star from "../svg/star.svg"
@@ -14,6 +15,15 @@ import X from "../svg/x.svg"
 export default ({ ...props }) => {
     const data = useStaticQuery(graphql`
     query AppQuery {
+        allFile(filter: {sourceInstanceName: {eq: "assets"}}) {
+            nodes {
+              childImageSharp {
+                fixed(width: 300, height: 300) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
         allMarkdownRemark {
             nodes {
               frontmatter {
@@ -69,15 +79,24 @@ export default ({ ...props }) => {
     const menuSections = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle === null)
 
     return (
-        <div className="order-app">
-            <OrderStepper activeStep={1} />
-            <h2>Our Takeout Menu</h2>
-            <Accordion>
-                <Menu setModalData={setModalData} menuSections={menuSections} />
-            </Accordion>
-            {Object.getOwnPropertyNames(modalData).length !== 0 && <ItemModal modalData={modalData} setModalData={setModalData} setOrder={setOrder} />}
-            {isCheckoutButtonVisible && Object.getOwnPropertyNames(modalData.length === 0) && <CheckoutButton />}
-        </div>
+        <>
+            <SEO
+                title="Order Menu"
+            >
+                <meta name="og:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
+                <meta name="twitter:image" content={data.allFile.nodes[0].childImageSharp.fixed} />
+                <meta name="twitter:image:alt" content={`${data.restaurantInfoJson.restaurantName} Order Menu Page`} />
+            </SEO>
+            <div className="order-app">
+                <OrderStepper activeStep={1} />
+                <h2>Our Takeout Menu</h2>
+                <Accordion>
+                    <Menu setModalData={setModalData} menuSections={menuSections} />
+                </Accordion>
+                {Object.getOwnPropertyNames(modalData).length !== 0 && <ItemModal modalData={modalData} setModalData={setModalData} setOrder={setOrder} />}
+                {isCheckoutButtonVisible && Object.getOwnPropertyNames(modalData.length === 0) && <CheckoutButton />}
+            </div>
+        </>
     )
 }
 
