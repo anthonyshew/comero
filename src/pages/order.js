@@ -39,6 +39,11 @@ export default ({ ...props }) => {
           restaurantInfoJson {
               restaurantName
           }
+          orderSettings: file(sourceInstanceName: {eq: "orderSettings"}) {
+            childRestaurantInfoJson {
+              orderingBool
+            }
+          }
     }
     `)
 

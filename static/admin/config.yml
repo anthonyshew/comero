@@ -213,6 +213,11 @@ collections:
         name: "orderingSettings"
         file: "content/restaurantInfo/orderingSettings.json"
         fields:
+        - label: "Online Ordering Available?"
+          name: "orderingBool"
+          widget: "boolean"
+          default: false
+          hint: "Turn this switch on if you would like online ordering to be available!"
         - label: "Takeout Delay"
           name: "takeoutDelay"
           widget: "number"

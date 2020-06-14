@@ -31,6 +31,11 @@ const Layout = ({ children }) => {
         state
       }
     }
+    orderSettings: file(sourceInstanceName: {eq: "orderSettings"}) {
+      childRestaurantInfoJson {
+        orderingBool
+      }
+    }
     site {
       siteMetadata {
         title
@@ -41,12 +46,13 @@ const Layout = ({ children }) => {
   `)
 
   const { restaurantMotto, restaurantName } = data.restaurantInfoJson
+  const orderBoolean = data.orderSettings.childRestaurantInfoJson.orderingBool
 
   let header, footer
 
   header = (
     <>
-      <Navbar data={data} scrollTopFocus="scrollTopFocus" />
+      <Navbar data={data} scrollTopFocus="scrollTopFocus" orderBoolean={orderBoolean} />
       <div className="hero-container">
         <Image className="hero-image" fluid={data.allFile.nodes.filter(node => node.name === "hero")[0].childImageSharp.fluid} alt={`${data.restaurantInfoJson.restaurantName}'s Restaurant & Food.`} />
         <div className="flex-container">
@@ -62,7 +68,7 @@ const Layout = ({ children }) => {
   footer = (
     <>
       <ReturnToTop />
-      <Navbar data={data} />
+      <Navbar data={data} orderBoolean={orderBoolean} />
       <TermsOfUse data={data} />
       <span className="attribution">This website was created by <a href="https://shewperman.dev" target="_blank" rel="noopener noreferrer">Shewperman Web & Software Development</a> using <a href="https://comero.netlify.app" target="_blank" rel="noopener noreferrer">the Comero platform</a>.</span>
     </>
@@ -79,13 +85,13 @@ const Layout = ({ children }) => {
 
 export default Layout
 
-const Navbar = ({ data, scrollTopFocus }) => (
+const Navbar = ({ data, scrollTopFocus, orderBoolean }) => (
   <nav id="home" className="navbar">
     <a id={scrollTopFocus} href="#home">Home</a>
     <a href="#store">Location & Hours</a>
     <a href="#menu">Menu</a>
     {data.restaurantInfoJson.restaurantAbout.length > 0 ? <a href="#about">About</a> : null}
-    <Link to="/order" className="nav-special">Order online!</Link>
+    {orderBoolean && <Link to="/order" className="nav-special">Order online!</Link>}
   </nav>
 )
 

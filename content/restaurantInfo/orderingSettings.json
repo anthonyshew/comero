@@ -1,3 +1,4 @@
 {
-  "takeoutDelay": 15
+  "takeoutDelay": 15,
+  "orderingBool": true
 }

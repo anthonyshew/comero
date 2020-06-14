@@ -72,6 +72,11 @@ const Index = ({ location }) => {
         }
       }
     }
+    orderSettings: file(sourceInstanceName: {eq: "orderSettings"}) {
+      childRestaurantInfoJson {
+        orderingBool
+      }
+    }
   }
   `)
 
@@ -79,6 +84,7 @@ const Index = ({ location }) => {
   const menuSections = data.allMarkdownRemark.nodes.filter(elem => elem.frontmatter.specialTitle === null)
   const { mondayHours, tuesdayHours, wednesdayHours, thursdayHours, fridayHours, saturdayHours, sundayHours } = data.restaurantInfoJson
   const { streetAddress, city, state, zipCode } = data.restaurantInfoJson.address
+  const orderingBool = data.orderSettings.childRestaurantInfoJson.orderingBool
 
   return (
     <Layout location={location}>
@@ -98,13 +104,16 @@ const Index = ({ location }) => {
           <p>{data.restaurantInfoJson.restaurantName}</p>
           <p>{streetAddress}</p>
           <p>{city}, {state} {zipCode}</p>
-          <div className="phone"><Phone /><p>{data.restaurantInfoJson.phone}</p></div>
+          <div className="phone">
+            <Phone />
+            <p>{data.restaurantInfoJson.phone}</p>
+          </div>
           {data.restaurantInfoJson.email && <div className="email"><Email /><p className="email">{data.restaurantInfoJson.email}</p></div>}
         </div>
       </section>
 
       <section id="menu" className="menu-container">
-        <Link to="/order" className="order-link">Order online!</Link>
+        {orderingBool && <Link to="/order" className="order-link">Order online!</Link>}
         <h2>Menu</h2>
         <Accordion>
           {menuSpecials.length > 0 && <Specials menuSpecials={menuSpecials} />}
