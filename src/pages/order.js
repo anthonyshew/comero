@@ -97,7 +97,7 @@ const Menu = ({ menuSections, setModalData }) => {
 
     return (
         <>
-            {menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
+            {menuSections.length > 0 ? menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
                 <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
                     {frontmatter.menuSectionList.map((item) => (
                         <button key={item.menuItem} className="menu-item" onClick={() => openMenuItem(item)}>
@@ -108,7 +108,7 @@ const Menu = ({ menuSections, setModalData }) => {
                         </button>
                     ))}
                 </AccordionItem>
-            ))}
+            )) : <p className="no-menu-placeholder">We are currently updating our menu! Stay tuned!</p>}
         </>
     )
 }

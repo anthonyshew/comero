@@ -151,11 +151,10 @@ const Specials = ({ menuSpecials }) => (
 
 const Menu = ({ menuSections }) => (
   <>
-    {menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
+    {menuSections.length > 0 ? menuSections.sort((a, b) => a.frontmatter.orderPosition - b.frontmatter.orderPosition).map(({ frontmatter }) => (
       <AccordionItem key={frontmatter.sectionTitle} header={frontmatter.sectionTitle}>
         {frontmatter.menuSectionList.map((item) => (
           <div key={item.menuItem} className="menu-item">
-
             <h4>{item.favorite && <Star />} {item.menuItem}: ${Number(item.menuItemPrice).toFixed(2)}</h4>
             <div className="menu-item-body" style={{ minHeight: item.menuItemImage ? "200px" : null }}>
               {item.menuItemImage && <img className="menu-item-image" src={item.menuItemImage} alt={item.menuItem} loading="lazy" />}
@@ -164,7 +163,7 @@ const Menu = ({ menuSections }) => (
           </div>
         ))}
       </AccordionItem>
-    ))}
+    )) : <p className="no-menu-placeholder">We are currently updating our menu! Stay tuned!</p>}
   </>
 )
 

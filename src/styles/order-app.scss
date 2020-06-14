@@ -256,6 +256,12 @@
         font-size: 200%;
         transition: .2s;
     }
+
+    .no-menu-placeholder {
+        font-size: 18px;
+        font-family: $raleway;
+        text-align: center;
+    }
 }
 
 @media (hover:hover) {
