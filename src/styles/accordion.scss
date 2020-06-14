@@ -52,7 +52,7 @@
             transition: .2s;
 
             &.open {
-                border: 2px solid #9a181c;
+                border: 2px solid $tertiary-color;
                 border-top: none;
                 border-bottom-right-radius: 1rem;
                 border-bottom-left-radius: 1rem;
