@@ -3,20 +3,20 @@
     "open": "10:30 AM",
     "close": "9 PM"
   },
-  "restaurantName": "House Divided Brewery",
+  "restaurantName": "Smokehouse Grill Restaurant",
   "logo": "/static/assets/ezgif.com-webp-to-png.png",
-  "phone": "(319) 848-4197",
+  "phone": "(555) 555-5555",
   "fridayHours": {
     "open": "10:30 AM",
     "close": "10:30 PM"
   },
-  "restaurantAbout": "House Divided Brewery is a local brewery in Ely, Iowa! \n\nHouse Divided Brewery was created when Cal and Lisa Corrin took this picture for their 2013 Christmas card. Cal had been homebrewing for a few years and decided to use the name for his homebrewery. When the opportunity presented itself to open this nanobrewery, there was a debate on the name for the brewery. It was finally decided to keep the same name that had been used for several years.",
-  "restaurantMotto": "",
+  "restaurantAbout": "Smokehouse Grill Restaurant actually started in the mind of Anthony Shew, the gentleman that programmed this very website. But let's not let that from keep us from writing a totally real \"About Us\" section...\nSmokehouse Grill Restaurant is Anytown, USA's favorite place to pick up smoked and grilled delights. Our founder began by making some of the best meats known to man in his smoker within the confines of his very own backyard. From there, he began taking the grill out for the spin. Soon enough, the scents of his cooking caught the noses of his neighbor's who quickly began coming to his door to find out what they were salivating about.\nAt this point, our founder's neighbors began to ask him if they could pay him for his culinary delights. Yes, they wanted to pay him for his efforts. Our founder soon outgrew his grill and moved into the restaurant space that Anytown has enjoyed for the past 20 years. Family, friends, and even out-of-towners have made their way to Smokehouse Grill Restaurant for the legendary cooking our owner has created and there's a ton more where that came from.\nThe Smokiest. The Grilliest.\n",
+  "restaurantMotto": "The Smokiest. The Grilliest.",
   "address": {
-    "streetAddress": "1620 Dows St.",
-    "city": "Ely",
-    "state": "IA",
-    "zipCode": 52227
+    "streetAddress": "123 Main St.",
+    "city": "Anytown",
+    "state": "AZ",
+    "zipCode": 12345
   },
   "thursdayHours": {
     "open": "10:30 AM",
@@ -31,7 +31,7 @@
     "close": "9 PM"
   },
   "hero": "/static/assets/83696118_551176452137074_8774841008631316480_o.jpg",
-  "email": "elybrew@gmail.com",
+  "email": "anthony@shewperman.dev",
   "sundayHours": {
     "open": "10:30 AM",
     "close": "10:30 PM"

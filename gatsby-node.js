@@ -63,49 +63,5 @@ exports.createSchemaCustomization = ({ actions }) => {
         orderOptionPriceChange: String
     }
     `
-
-    // const typeDefs = `
-    // type MarkdownRemark implements Node {
-    //     edges: [Edge]
-    //     nodes: Nodes
-    // }
-
-    // type Nodes {
-    //     frontmatter: Frontmatter
-    // }
-
-    // type Edge {
-    //     node: InnerNode
-    // }
-
-    // type InnerNode {
-    //     frontmatter: Frontmatter
-    // }
-
-    // type Frontmatter {
-    //     title: String
-    //     sectionTitle: String
-    //     orderPosition: String
-    //     specialDescription: String
-    //     specialSubtitle: String
-    //     specialTitle: String
-    //     menuSectionList: MenuSectionList
-    // }
-
-    // type MenuSectionList {
-    //     favorite: String
-    //     menuItem: String
-    //     menuItemDescription: String
-    //     menuItemImage: String
-    //     menuItemPrice: String
-    //     orderOptions: OrderOptions
-    // }
-
-    // type OrderOptions {
-    //     orderOptionName: String
-    //     orderOptionPriceChange: String
-    // }
-    // `
-
     createTypes(typeDefs)
 }
