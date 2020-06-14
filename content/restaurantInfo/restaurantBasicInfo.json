@@ -4,13 +4,13 @@
     "close": "9 PM"
   },
   "restaurantName": "House Divided Brewery",
-  "logo": "/static/assets/housedividedlogo.webp",
+  "logo": "/static/assets/ezgif.com-webp-to-png.png",
   "phone": "(319) 848-4197",
   "fridayHours": {
     "open": "10:30 AM",
     "close": "10:30 PM"
   },
-  "restaurantAbout": "House Divided Brewery is a local brewery in Ely, Iowa! \n\nHouse Divided Brewery was created when Cal and Lisa Corrin took this picture for their 2013 Christmas card. Cal had been homebrewing for a few years and decided to use the name for his homebrewery. When the opportunity presented itself to open this nanobrewery, there was a debate on the name for the brewery. It was finally decided to keep the same name that had been used for several years -\n\nHOUSE DIVIDED BREWERY\n",
+  "restaurantAbout": "House Divided Brewery is a local brewery in Ely, Iowa! \n\nHouse Divided Brewery was created when Cal and Lisa Corrin took this picture for their 2013 Christmas card. Cal had been homebrewing for a few years and decided to use the name for his homebrewery. When the opportunity presented itself to open this nanobrewery, there was a debate on the name for the brewery. It was finally decided to keep the same name that had been used for several years.",
   "restaurantMotto": "",
   "address": {
     "streetAddress": "1620 Dows St.",
