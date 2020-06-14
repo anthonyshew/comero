@@ -18,6 +18,9 @@ export default ({ ...props }) => {
           }
         }
       }
+      restaurantInfoJson {
+        restaurantName
+      }
     }
     `)
 
