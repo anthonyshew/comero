@@ -4,12 +4,12 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Smokehouse Grill Restaurant`,
+    title: `House Divided Brewery`,
     author: {
       name: `Anthony Shew`,
-      summary: `who develops things.`,
+      summary: `, creator of Comero.`,
     },
-    description: `The easiest restaurant template out there.`,
+    description: `House Divided Brewery.`,
     siteUrl: `${process.env.ROOT_URL}`,
     social: {
       twitter: "/theunrealashew"
