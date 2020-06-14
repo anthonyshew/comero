@@ -115,10 +115,11 @@ const Menu = ({ menuSections, setModalData }) => {
 
 const ItemModal = ({ modalData, setModalData, setOrder }) => {
     const [basePrice] = useState(modalData.menuItemPrice)
-    const [currentPrice, setCurrentPrice] = useState(basePrice)
+    const [currentPrice, setCurrentPrice] = useState(parseFloat(basePrice))
     const [quantity, setQuantity] = useState(1)
     useBodyScrollLock()
     const { register, handleSubmit, watch } = useForm()
+    console.log(currentPrice)
 
     const selectedOptions = modalData.orderOptions ? watch(modalData.orderOptions.map(option => option.orderOptionName)) : []
 

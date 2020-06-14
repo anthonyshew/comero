@@ -41,7 +41,6 @@ export default ({ location }) => {
         title="Thank You"
       />
       <div className="thank-you-page">
-        <img className="company-logo" src={restaurantInfoJson.logo.split("/static/")[1]} alt="Restaurant logo." />
         <div className="flex">
           <h1>{restaurantInfoJson.restaurantName} thanks&nbsp;you!</h1>
           <p className="wait-time">Your food will be ready for pickup in <strong className="bold">approximately {orderSettings.edges[0].node.childRestaurantInfoJson.takeoutDelay} minutes!</strong></p>

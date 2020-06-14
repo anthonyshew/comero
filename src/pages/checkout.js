@@ -110,8 +110,6 @@ const Form = ({ orderTotal }) => {
             })
     }
 
-    console.log(errors)
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="section">
