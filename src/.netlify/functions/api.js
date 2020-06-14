@@ -52,7 +52,7 @@ router.post('/checkout-success', (req, res) => {
     const { order, data } = req.body
 
     const emailMessage = {
-        to: [process.env.EMAIL_TO, data.email],
+        to: process.env.EMAIL_TO,
         from: process.env.EMAIL_FROM,
         replyTo: data.email,
         subject: `New Online Order!`,
