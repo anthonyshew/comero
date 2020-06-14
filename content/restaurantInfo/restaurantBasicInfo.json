@@ -4,7 +4,7 @@
     "close": "9 PM"
   },
   "restaurantName": "Smokehouse Grill Restaurant",
-  "logo": "/static/assets/ezgif.com-webp-to-png.png",
+  "logo": "/static/assets/smokehouse-grill-restaurant-logo-design-template-6e6307c06cb7f367d215a0edd7141234.jpg",
   "phone": "(555) 555-5555",
   "fridayHours": {
     "open": "10:30 AM",
@@ -30,7 +30,7 @@
     "open": "10:30 AM",
     "close": "9 PM"
   },
-  "hero": "/static/assets/83696118_551176452137074_8774841008631316480_o.jpg",
+  "hero": "/static/assets/hero.jpg",
   "email": "anthony@shewperman.dev",
   "sundayHours": {
     "open": "10:30 AM",
